@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Product extends Model
 {
     
+ 
     use HasFactory;
     protected $fillable = [
         'name',
@@ -26,4 +27,9 @@ class Product extends Model
         'namecode',
         'tags'
     ];
+
+    public function attributes()
+    {
+        return $this->hasMany(ProductAttribute::class);
+    }
 }

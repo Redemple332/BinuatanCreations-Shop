@@ -36,24 +36,32 @@
                         </tr>
                     </tfoot>
                     <tbody>                            
+                        @foreach($products as $product )
                         <tr>
                             <td><div class="custom-control custom-checkbox small">
                                 <input type="checkbox" class="custom-control-input" id="customCheck">
                                 <label class="custom-control-label" for="customCheck"></label>
                             </div></td>
                             <td><a href="" ><img  style="width="40" height="40" src="" alt=""></a></td>
-                            <td><a href="" >BAGS</a></td>
-                            <td>Medium</td>
-                                <td>Available</td>
-                                
+                            <td><a href="" >{{ $product->name }}</a></td>  
+                            <td> 
+                            @foreach($product->attributes as $attribute)
+                                @if($attribute->attribute == 'size')
+                                 {{ $attribute->value }}
+                                @endif
+                            @endforeach
+                        </td>
+                            <td>Available</td>                       
                             <td>₱12</td>
                             <td>12%</td>
                             <td>₱122</td>
                             <td>2</td>
-                        </tr>                        
-                        
+                        </tr> 
+                        @endforeach            
                     </tbody>
                 </table>
+              
+                {{$products->links()}}
             </div>
         </div>
     </div>

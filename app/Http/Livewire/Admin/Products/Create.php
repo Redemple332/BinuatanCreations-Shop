@@ -3,6 +3,10 @@
 namespace App\Http\Livewire\Admin\Products;
 use Livewire\Component;
 use App\Models\Product;
+use App\Models\Size;
+use App\Models\Color;
+use App\Models\Category;
+
 class Create extends Component
 {
   
@@ -63,12 +67,24 @@ class Create extends Component
         //     'tags'  => '',
         // ];
         
-        
-    
     }
+
+ 
+
     public function render()
     {
-        return view('livewire.admin.products.create')->extends('livewire.admin.layouts.app');
+        $categories = Category::orderBy('category', 'ASC')->get();
+        $colors = Color::orderBy('name', 'ASC')->get();
+        $sizes = Size::orderBy('name', 'ASC')->get();
+       
+        $data = [
+            'categories' => $categories,
+            'colors' => $colors,
+            'sizes' => $sizes
+            
+        ];
+    
+        return view('livewire.admin.products.create')->extends('livewire.admin.layouts.app')->with($data);
     }
  
    

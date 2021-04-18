@@ -72,7 +72,9 @@
                                         <div class="form-group"><label for="category"><strong>Category</strong></label>
                                             <select class="form-control input-sm" wire:model="form.category_id" required autofocus>
                                             <option value="0">Select Category</option>
-                                            <option value="0">Wallet</option>            
+                                            @foreach($categories as $category )     
+                                                <option value="0">{{ $category->category }}</option>     
+                                            @endforeach  
                                             </select>
                                         </div>
                                     </div>

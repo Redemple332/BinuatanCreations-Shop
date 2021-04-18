@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Livewire\Admin\Dashboard\Dashboard;
-use App\Http\Livewire\Admin\Products\Product;
+use App\Http\Livewire\Admin\Products\Index;
 use App\Http\Livewire\Admin\Products\Create;
 use App\Http\Livewire\Admin\Orders\Orders;
 use App\Http\Livewire\Admin\Catalog\Categories;
@@ -20,7 +20,7 @@ use App\Http\Livewire\Admin\Catalog\Images;
 |
 */
 Route::get('/admin/dashboard', Dashboard::class)->name('admin.dashboard');
-Route::get('/admin/products', Product::class)->name('admin.products');
+Route::get('/admin/products', Index::class)->name('admin.products');
 Route::get('/admin/products/create', Create::class)->name('admin.product.create');
 
 //CATALOG

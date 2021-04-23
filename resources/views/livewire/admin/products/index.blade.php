@@ -46,7 +46,7 @@
                             <td><a href="" >{{ $product->name }}</a></td>  
                             <td> 
                             @foreach($product->attributes as $attribute)
-                                @if($attribute->attribute == 'size')
+                                @if($attribute->attribute == 'Color')
                                  {{ $attribute->value }}
                                 @endif
                             @endforeach
@@ -61,7 +61,7 @@
                     </tbody>
                 </table>
               
-                {{$products->links()}}
+             
             </div>
         </div>
     </div>

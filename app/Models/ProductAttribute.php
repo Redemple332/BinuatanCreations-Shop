@@ -7,8 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class ProductAttribute extends Model
 {
-    use HasFactory;
+    
+    protected $table = 'product_attributes';
 
+    use HasFactory;
 
     public function product()
     {

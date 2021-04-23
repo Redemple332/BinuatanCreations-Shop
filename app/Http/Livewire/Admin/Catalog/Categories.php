@@ -11,87 +11,41 @@ class Categories extends Component
 
     use WithFileUploads;
 
-    protected $listeners = ['deleteConfirmed'];
-
-    public $category,$photo;
+    protected $listeners = ['deleteConfirmed' , 'updateCategories' => 'mount'];
 
     public $categoryId, $image;
   
+
+
     public function render()
     {
 
         return view('livewire.admin.catalog.categories', [
-            'categories' => Category::all(),
-        ])
+            'categories' => Category::all(),])
         ->extends('livewire.admin.layouts.app');
     }
 
-    public function add(){
-        $this->clearVars();
-        $this->dispatchBrowserEvent('openModalCategory');
+    public function mount()
+    {
+        $this->categories = Category::all();
     }
 
-    public function edit($categoryId){
 
-        $category = Category::findOrFail($categoryId);
-        $this->image    = $category->imagePath;
-        $this->category = $category->category;
-        $this->categoryId = $categoryId;
-        $this->dispatchBrowserEvent('openModalCategory');
-    }
-
-    public function save(){
-
-
-        $this->validate([
-
-            'category' => 'required|unique:categories,category,'.$this->categoryId,
-            'photo'    => 'required|image|max:1024file|mimes:png,jpg', // 1MB Max
-        ]);
+    public function status($categoryId, $status)
+    {  
+        $this->categoryId =  $categoryId;
+        $categ = Category::findOrFail($this->categoryId);
         
-        if($this->photo){
-            $filename =  $this->photo->store('public/category_images');
-            $this->image = basename($filename);
-        }
-
-        //UPDATE
-        if($this->categoryId)
+        if($status == 0)
         {
-                
-            // Category::findOrFail($categoryId)->update([
-                
-            // ]);
-           $cat = Category::findOrFail($this->categoryId);
-           $cat->category = $this->category;
-
-           if($this->photo){
-            $cat->image = $this->image;
-           }
-           $cat->save();
-           $message = $this->category.' category updated successfully!';
+            $categ->status = 1;
         }
-        
-        //ADD
         else
-        {        
-            Category::create([
-                'category' => $this->category, 
-                'image' => $this->image,
-            ]);
-
-            $message = $this->category.' category added successfully!';
+        {
+            $categ->status = 0;
         }
-        
-        $this->clearVars();
-
-        $this->dispatchBrowserEvent('closeModalCategory');
-
-        $this->dispatchBrowserEvent('successAlert', ['message' => $message]);
-
-     
+        $categ->save();    
     }
-
-
 
     public function delete($categoryId){
         $this->categoryId =  $categoryId;
@@ -107,7 +61,6 @@ class Categories extends Component
         
     }
     
-    
 
     public function showImage($categoryId)
     {
@@ -116,18 +69,6 @@ class Categories extends Component
         $this->dispatchBrowserEvent('showImage', ['image' => $image , 'title' => $category->category, 'text' => 'Category']);
     }
 
-    private function clearVars()
-    {
-        $this->category = null;
-        $this->photo = null;
-        $this->categoryId = null;
-        $this->image = null;
-    }
-    
-    public function updatedPhoto(){
-        $this->validate([
-            'photo' => 'required|image|max:1024file|mimes:png,jpg', // 1MB Max
-        ]);
-    }
+
 
 }

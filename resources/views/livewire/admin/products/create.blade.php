@@ -6,32 +6,12 @@
                 <div class="card-header py-3">
                     <h6 class="text-primary font-weight-bold m-0">Product Images</h6>
                 </div>
-                <form wire:submit.prevent="create" enctype="multipart/form-data">
+                <form wire:submit.prevent="save" enctype="multipart/form-data">
                 <div class="card-body">
                     <center> <img style="border"  src="{{asset('asset2/img/dogs/image2.jpeg')}}" width="160" height="170">
                     </center>
                     <hr>
                     <input type="file" name="cover_image" >
-                </div>
-            </div>
-            <div class="card shadow mb-4">
-                <div class="card-header py-3">
-                    <h6 class="text-primary font-weight-bold m-0">Product Images</h6>
-                </div>
-                <div class="card-body">
-                    <p>You can add here.</p>
-                    <a href="#" class="btn btn-google btn-block">
-                        <i class="fas fa-plus"></i> Category
-                    </a>
-                    <a href="#" class="btn btn-facebook btn-block">
-                        <i class="fas fa-plus"></i> Images
-                    </a>
-                    <a href="#" class="btn btn-google btn-block">
-                        <i class="fas fa-plus"></i> Color
-                    </a>
-                    <a href="#" class="btn btn-facebook btn-block">
-                        <i class="fas fa-plus"></i> Size
-                    </a>
                 </div>
             </div>
         </div>
@@ -42,6 +22,7 @@
                         <div class="card-header py-3">
                             <p class="text-primary m-0 font-weight-bold">Product Information</p>
                         </div>
+                   
                         <div class="card-body">        
                                 <div class="form-group"><label for="productname"><strong>Product Name</strong></label>
                                     <input class="form-control" wire:model="form.name" type="text" placeholder="Enter product name..."  required autofocus>                                  
@@ -53,37 +34,49 @@
                                 <div class="form-row">
                                     <div class="col">
                                         <div class="form-group"><label for="quantity"><strong>Quantity</strong></label>
-                                            <input class="form-control" wire:model="form.quantity"  type="number" placeholder="Enter quantity..." required autofocus>
+                                            <input class="form-control" wire:model="form.qty"  type="number" placeholder="Enter quantity..." required autofocus>
                                         </div>
                                     </div>
                                     <div class="col">
                                         <div class="form-group"><label for="originalprice"><strong>Original price</strong></label>
-                                            <input class="form-control" wire:model="form.original_price" type="number" placeholder="Enter original price..."  required autofocus>
+                                            <input class="form-control" wire:model="form.orp" type="number" placeholder="Enter original price..."  required autofocus>
                                         </div>
                                     </div>
                                     <div class="col">
                                         <div class="form-group"><label for="price"><strong>Price</strong></label>
-                                            <input class="form-control" wire:model="form.product_price" type="number" placeholder="Enter price...."  required autofocus>
+                                            <input class="form-control" wire:model="form.price" type="number" placeholder="Enter price...."  required autofocus>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="form-row">
                                     <div class="col">
                                         <div class="form-group"><label for="category"><strong>Category</strong></label>
-                                            <select class="form-control input-sm" wire:model="form.category_id" required autofocus>
-                                            <option value="0">Select Category</option>
-                                            @foreach($categories as $category )     
-                                                <option value="0">{{ $category->category }}</option>     
-                                            @endforeach  
-                                            </select>
+                                            <div class="input-group">
+                                                <select class="custom-select" id="inputGroupSelect04">
+                                                    <option selected>Choose...</option>
+                                                    @foreach($categories as $category )     
+                                                         <option value="{{ $category->ID }}">{{ $category->category }}</option>     
+                                                    @endforeach  
+                                                </select>
+                                                <div class="input-group-append">
+                                                  <button class="btn btn-outline-secondary" type="button" wire:click="$emit('addCategory')"><i class="fas fa-plus"></i></button>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                     <div class="col">
                                         <div class="form-group"><label for="size"><strong>Size</strong></label>
-                                            <select class="form-control input-sm"wire:model="form.size_id" required autofocus >
-                                            <option value="0">Select Size</option>  
-                                            <option value="1">L</option>
-                                            </select>
+                                            <div class="input-group">
+                                                <select class="custom-select" id="inputGroupSelect04">
+                                                  <option selected>Choose...</option>
+                                                  <option value="1">One</option>
+                                                  <option value="2">Two</option>
+                                                  <option value="3">Three</option>
+                                                </select>
+                                                <div class="input-group-append">
+                                                  <button class="btn btn-outline-secondary" type="button">Add</button>
+                                                </div>
+                                              </div>
                                         </div>
                                     </div>
                                     <div class="col">
@@ -120,13 +113,14 @@
                                 <div class="form-row">
                                     <div class="col">
                                         <div class="form-group">
+                                        
                                             <div class="custom-control custom-checkbox big">
-                                                <input type="checkbox" class="custom-control-input" id="customCheck">
-                                                <label class="custom-control-label" for="customCheck"><strong>New</strong></label>
+                                                <input  type="checkbox" class="custom-control-input" id="customCheck">
+                                                <label  class="custom-control-label" for="customCheck"><strong>New</strong></label>
                                             </div>
                                         </div>
                                     </div>  
-                                    <div class="col">
+                                    {{-- <div class="col">
                                         <div class="form-group">
                                             <div class="custom-control custom-checkbox big">
                                                 <input type="checkbox" class="custom-control-input" id="customCheck">
@@ -141,7 +135,7 @@
                                                 <label class="custom-control-label" for="customCheck"><strong>status</strong></label>
                                             </div>
                                         </div>
-                                    </div>
+                                    </div> --}}
                                 </div>    
                                 <button type="submit" class="btn btn-primary btn-block">
                                     <i class="fas fa-plus"></i> Save
@@ -154,4 +148,5 @@
             </div>
         </div>
     </div>
+    @livewire('admin.modals.create-category')
 </div>

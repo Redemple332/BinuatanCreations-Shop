@@ -25,7 +25,7 @@ class CreateProductsTable extends Migration
             $table->string('image')->default('');
             $table->mediumText('tags')->default('');
             $table->string('pictures_id')->default('');
-            $table->boolean('ship')->default(0);
+            $table->boolean('ship')->default(1);
             $table->boolean('status')->default(0);
             $table->timestamps();
         });

@@ -70,9 +70,7 @@ class CreateCategory extends Component
         if($this->categoryId)
         {
                 
-            // Category::findOrFail($categoryId)->update([
-                
-            // ]);
+
            $cat = Category::findOrFail($this->categoryId);
            $cat->category = $this->category;
 
@@ -93,7 +91,7 @@ class CreateCategory extends Component
 
             $message = $this->category.' category added successfully!';
         }
-        $this->emit('updateCategories');
+        $this->emit('updatedCategories');
         $this->clearVars();
         $this->dispatchBrowserEvent('closeModalCategory');
         $this->dispatchBrowserEvent('successAlert', ['message' => $message]);

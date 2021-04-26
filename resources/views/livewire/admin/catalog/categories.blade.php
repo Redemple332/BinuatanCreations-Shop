@@ -38,7 +38,7 @@
                                         <label class="custom-control-label" for="customSwitch{{ $category->id }}"></label>
                                     </span>
                                     <button wire:click.prevent="$emit('editCategory',{{ $category->id }})" title="Edit" class="btn btn-primary btn-sm" ><span class="fa fa-edit fw-fa"></span></button>
-                                    <a wire:click.prevent="showImage(({{  $category->id }}))"  class="btn btn-info btn-sm"  data-hover="tooltip" title="View"><span class="fa fa-eye"></span></a>
+                                    <button wire:click.prevent="showImage(({{  $category->id }}))"  class="btn btn-info btn-sm"  data-hover="tooltip" title="View"><span class="fa fa-eye"></span></button>
                                     <button  class="btn btn-danger btn-sm" wire:click.prevent="delete(({{ $category->id }}))"  data-hover="tooltip" title="Delete"><span class="fa fa-trash"></span></button>
                                 </td> 
                               
@@ -52,10 +52,6 @@
         </div>
     </div>
     <!-- DataTales Example -->
-
-    <style>
-    
-    </style>
     @livewire('admin.modals.create-category')
    
 </div>

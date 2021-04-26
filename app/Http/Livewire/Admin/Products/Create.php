@@ -28,15 +28,27 @@ class Create extends Component
         'pictures_id'  => '',
         'ship'  => 0,
     ];
-    protected $listeners = ['updateCategories'];
+    protected $listeners = ['updatedCategories', 'updatedColors', 'updatedSizes'];
     // public $attribute_color,$attribute_category,$attribute_size;
 
 
-    public function updateCategories(){
-        $this->categories = Category::all();
+    public function updatedCategories()
+    {
+        $this->categories = Category::where('status', 1)->orderBy('category', 'ASC')->get();
     }
 
-    public function save(){
+    public function updatedColors()
+    {
+        $this->colors =  Color::where('status', 1)->orderBy('name', 'ASC')->get();
+    }
+
+    public function updatedSizes()
+    {
+        $sizes = Size::where('status', 1)->orderBy('name', 'ASC')->get();
+    }
+
+    public function save()
+    {
 
         $this->Validation();
         // $category = Category::findOrFail($this->attribute_category);
@@ -74,9 +86,11 @@ class Create extends Component
 
     public function render()
     {
-        $categories = Category::orderBy('category', 'ASC')->get();
-        $colors = Color::orderBy('name', 'ASC')->get();
-        $sizes = Size::orderBy('name', 'ASC')->get();
+        $categories = Category::where('status', 1)->orderBy('category', 'ASC')->get();
+
+        $colors = Color::where('status', 1)->orderBy('name', 'ASC')->get();
+
+        $sizes = Size::where('status', 1)->orderBy('name', 'ASC')->get();
        
         $data = [
             'categories' => $categories,

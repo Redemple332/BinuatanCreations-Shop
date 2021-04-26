@@ -52,14 +52,34 @@ window.addEventListener('showImage', event=>{
 
 //------------------MODAL SECTION-------------------\\
 
-//ADD CATEGORY
+//OPEN CATEGORY
 window.addEventListener('closeModalCategory', event => {
     $("#modalCategory").modal('hide');
 })
 
-//EDIT CATEGORY
+//CLOSE CATEGORY
 window.addEventListener('openModalCategory', event => {
     $("#modalCategory").modal('show');
 })
 
+
+//OPEN COLOR
+window.addEventListener('closeModalColor', event => {
+    $("#modalColor").modal('hide');
+})
+
+//CLOSE COLOR
+window.addEventListener('openModalColor', event => {
+    $("#modalColor").modal('show');
+})
+
+//OPEN SIZE
+window.addEventListener('closeModalSize', event => {
+    $("#modalSize").modal('hide');
+})
+
+//CLOSE SIZE
+window.addEventListener('openModalSize', event => {
+    $("#modalSize").modal('show');
+})
 //------------------MODAL SECTION-------------------//

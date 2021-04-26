@@ -4,30 +4,25 @@ namespace App\Http\Livewire\Admin\Catalog;
 
 use Livewire\Component;
 use App\Models\Category;
-use Livewire\WithFileUploads;
-
 class Categories extends Component
 {
 
-    use WithFileUploads;
 
-    protected $listeners = ['deleteConfirmed' , 'updateCategories' => 'mount'];
+    protected $listeners = ['deleteConfirmed' , 'updatedCategories' => 'mount'];
 
     public $categoryId, $image;
   
-
-
     public function render()
     {
 
         return view('livewire.admin.catalog.categories', [
-            'categories' => Category::all(),])
+            'categories' => Category::orderBy('category')->get(),])
         ->extends('livewire.admin.layouts.app');
     }
 
     public function mount()
     {
-        $this->categories = Category::all();
+        $this->categories = Category::orderBy('category')->get();
     }
 
 

@@ -5,7 +5,7 @@
   <!-- DataTales Example -->
   <div class="card shadow mb-4">
       <div class="card-header py-3">
-          <p class="text-primary m-0 font-weight-bold">List of Colors <a href="{{ route('admin.product.create') }}"  class="btn btn-primary btn-sm" ><i class="fas fa-plus"></i>Add</a></p>
+          <p class="text-primary m-0 font-weight-bold">List of Colors <button  class="btn btn-primary btn-sm"  wire:click="$emit('addColor','')"><i class="fas fa-plus"></i>Add</button></p>
       </div>
       <div class="card-body">
           <div class="table-responsive">
@@ -14,6 +14,7 @@
                       <tr>
                           <th>Color</th>
                           <th>Code</th>
+                          <th>Status</th>
                           <th class="center">Action</th>
                       </tr>
                   </thead>
@@ -21,22 +22,34 @@
                       <tr>
                           <th>Color</th>
                           <th>Code</th>
+                          <th>Status</th>
                           <th class="center">Action</th>
                       </tr>
                   </tfoot>
                   <tbody>                            
-                      <tr>
-                          <td>Blue</td>
-                          <td>333333343</td>
-                          <td class="center">
-                              <button type="button"  class="btn btn-primary btn-sm" ><span class="fa fa-edit fw-fa"></span></button>
-                              <button  class="btn btn-danger btn-sm" wire:click.prevent="delete(({{ 1 }}))"  data-hover="tooltip" title="View"><span class="fa fa-trash"></span></button>
-                          </td> 
-                      </tr>                        
+                    @forelse ($colors as $color )
+                        <tr>
+                            <td>{{ $color->name }}</td>
+                            <td>{{ $color->code }}</td>
+                            <td class="center"><span class="badge {{ $color->status == 1 ?'badge-success': 'badge-danger' }} badge-counter">{{ $color->status == 1 ?'Active': 'Deactive' }}</span></td>
+                            <td class="center">
+                            <span class="custom-switch m-0">
+                                <input  class="custom-control-input"  wire:click="status({{ $color->id }}, '{{ $color->status }}')" 
+                                 id="customSwitch{{ $color->id }}" type="checkbox" @if ($color->status == 1) checked @endif>
+                                <label class="custom-control-label" for="customSwitch{{ $color->id }}"></label>
+                            </span>
+                            <button wire:click.prevent="$emit('addColor',{{ $color->id }})" title="Edit" class="btn btn-primary btn-sm" ><span class="fa fa-edit fw-fa"></span></button>
+                                <button  class="btn btn-danger btn-sm" wire:click.prevent="delete(({{ $color->id }}))"  data-hover="tooltip" title="Delete"><span class="fa fa-trash"></span></button>
+                            </td> 
+                        </tr>
+                    @empty
+                        
+                    @endforelse                        
                   </tbody>
               </table>
           </div>
       </div>
   </div>
   <!-- DataTales Example -->
+  @livewire('admin.modals.create-color')
 </div>

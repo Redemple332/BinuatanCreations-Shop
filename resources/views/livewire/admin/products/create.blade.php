@@ -52,10 +52,10 @@
                                     <div class="col">
                                         <div class="form-group"><label for="category"><strong>Category</strong></label>
                                             <div class="input-group">
-                                                <select class="custom-select" id="inputGroupSelect04">
+                                                <select class="custom-select">
                                                     <option selected>Choose...</option>
                                                     @foreach($categories as $category )     
-                                                         <option value="{{ $category->ID }}">{{ $category->category }}</option>     
+                                                         <option value="{{ $category->id }}">{{ $category->category }}</option>     
                                                     @endforeach  
                                                 </select>
                                                 <div class="input-group-append">
@@ -65,26 +65,33 @@
                                         </div>
                                     </div>
                                     <div class="col">
-                                        <div class="form-group"><label for="size"><strong>Size</strong></label>
+                                        <div class="form-group"><label for="size"><strong>Color</strong></label>
                                             <div class="input-group">
-                                                <select class="custom-select" id="inputGroupSelect04">
-                                                  <option selected>Choose...</option>
-                                                  <option value="1">One</option>
-                                                  <option value="2">Two</option>
-                                                  <option value="3">Three</option>
+                                                <select class="custom-select">
+                                                    <option selected>Choose...</option>
+                                                    @foreach($colors as $color )     
+                                                         <option value="{{ $color->id }}">{{ $color->name }}</option>     
+                                                    @endforeach  
                                                 </select>
                                                 <div class="input-group-append">
-                                                  <button class="btn btn-outline-secondary" type="button">Add</button>
+                                                    <button class="btn btn-outline-secondary" type="button" wire:click="$emit('addColor', '')"><i class="fas fa-plus"></i></button>
                                                 </div>
-                                              </div>
+                                            </div>
                                         </div>
                                     </div>
                                     <div class="col">
-                                        <div class="form-group"><label for="color"><strong>Color</strong></label>
-                                            <select class="form-control input-sm" wire:model="form.color_id" required autofocus>
-                                            <option value="1">Select Color</option>
-                                            <option value="1">Blue</option>     
-                                            </select>
+                                        <div class="form-group"><label for="size"><strong>Size</strong></label>
+                                            <div class="input-group">
+                                                <select class="custom-select">
+                                                    <option selected>Choose...</option>
+                                                    @foreach($sizes as $size )     
+                                                        <option value="{{ $size->id }}">{{ $size->name }}</option>     
+                                                    @endforeach  
+                                                </select>
+                                                <div class="input-group-append">
+                                                    <button class="btn btn-outline-secondary" type="button" wire:click="$emit('addSize', '')"><i class="fas fa-plus"></i></button>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -149,4 +156,6 @@
         </div>
     </div>
     @livewire('admin.modals.create-category')
+    @livewire('admin.modals.create-size')
+    @livewire('admin.modals.create-color')
 </div>

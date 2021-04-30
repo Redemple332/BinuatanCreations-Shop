@@ -8,10 +8,42 @@
                 </div>
                 <form wire:submit.prevent="save" enctype="multipart/form-data">
                 <div class="card-body">
-                    <center> <img style="border"  src="{{asset('asset2/img/dogs/image2.jpeg')}}" width="160" height="170">
+                    <center>
+                       
+                        @error('photos') <span class="text-xs danger">{{ $message }}</span> @enderror
+
+                        @if ($photos)
+                            @foreach ($photos as $photo)
+
+                            <i class="fa fa-times cursor-pointer"aria-hidden="true" wire:click="remove({{$loop->index}})"></i>
+                            <img src="{{ $photo->temporaryUrl() }}" width="300">
+                            @endforeach
+                        @else
+                                                                
+                        @if ($image)
+                            <img src="{{ $image }}" width="100">
+                        @endif
+                            
+                        @endif
+                        <br>
+                        <div wire:loading wire:target="photos"><i class="fas fa-spinner fa-pulse fa-2x"></i></div> 
+
+                        <div
+                            x-data="{ isUploading: false, progress: 0 }"
+                            x-on:livewire-upload-start="isUploading = true"
+                            x-on:livewire-upload-finish="isUploading = false"
+                            x-on:livewire-upload-error="isUploading = false"
+                            x-on:livewire-upload-progress="progress = $event.detail.progress"
+                        >
+
+                        <hr class="sidebar-divider d-none d-md-block">
+
+                        <div class="btn btn-danger btn-block" @click="$refs.fileInput.click()">Upload Image</div>
+            
+                        <input x-ref="fileInput" type="file" multiple  wire:model="photos" hidden>
+                        @error('photos')  <p style="color: orange" class="text-xs">{{ $message }}</p> @enderror
                     </center>
                     <hr>
-                    <input type="file" name="cover_image" >
                 </div>
             </div>
         </div>
@@ -52,7 +84,7 @@
                                     <div class="col">
                                         <div class="form-group"><label for="category"><strong>Category</strong></label>
                                             <div class="input-group">
-                                                <select class="custom-select">
+                                                <select class="custom-select" wire:model="category">
                                                     <option selected>Choose...</option>
                                                     @foreach($categories as $category )     
                                                          <option value="{{ $category->id }}">{{ $category->category }}</option>     
@@ -65,9 +97,9 @@
                                         </div>
                                     </div>
                                     <div class="col">
-                                        <div class="form-group"><label for="size"><strong>Color</strong></label>
+                                        <div class="form-group"><label for="color"><strong>Color</strong></label>
                                             <div class="input-group">
-                                                <select class="custom-select">
+                                                <select class="custom-select" wire:model="color">
                                                     <option selected>Choose...</option>
                                                     @foreach($colors as $color )     
                                                          <option value="{{ $color->id }}">{{ $color->name }}</option>     
@@ -82,7 +114,7 @@
                                     <div class="col">
                                         <div class="form-group"><label for="size"><strong>Size</strong></label>
                                             <div class="input-group">
-                                                <select class="custom-select">
+                                                <select class="custom-select" wire:model="size">
                                                     <option selected>Choose...</option>
                                                     @foreach($sizes as $size )     
                                                         <option value="{{ $size->id }}">{{ $size->name }}</option>     
@@ -97,19 +129,11 @@
                                 </div>
                                 <div class="form-row">
                                     <div class="col">
-                                        <div class="form-group"><label for="namecode"><strong>Image</strong></label>
-                                            <select class="form-control input-sm" wire:model="form.namecode" required autofocus >
-                                            <option value="None">Select Image Collection</option>
-                                            <option value="Sample">Sample</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="col">
                                         <div class="form-group"><label for="gender"><strong>Gender</strong></label>
                                             <select class="form-control input-sm" wire:model="form.gender" required autofocus>
-                                            <option value="MEN AND WOMEN">MEN AND WOMEN</option>
-                                            <option value="MEN">MEN</option>
-                                            <option value="WOMEN">WOMEN</option>         
+                                                <option value="MEN AND WOMEN">MEN AND WOMEN</option>
+                                                <option value="MEN">MEN</option>
+                                                <option value="WOMEN">WOMEN</option>         
                                             </select>
                                         </div>
                                     </div>
@@ -119,34 +143,27 @@
                                 </div>
                                 <div class="form-row">
                                     <div class="col">
-                                        <div class="form-group">
-                                        
-                                            <div class="custom-control custom-checkbox big">
-                                                <input  type="checkbox" class="custom-control-input" id="customCheck">
-                                                <label  class="custom-control-label" for="customCheck"><strong>New</strong></label>
-                                            </div>
+                                        <div class="form-group"><label for="ship"><strong>Free shipping: </strong></label>
+                                            <span class="custom-switch m-0">
+                                                <input  class="custom-control-input" wire:model="form.ship" id="customSwitch" type="checkbox" >
+                                                <label class="custom-control-label" for="customSwitch"></label>
+                                            </span>
                                         </div>
                                     </div>  
-                                    {{-- <div class="col">
-                                        <div class="form-group">
-                                            <div class="custom-control custom-checkbox big">
-                                                <input type="checkbox" class="custom-control-input" id="customCheck">
-                                                <label class="custom-control-label" for="customCheck"><strong>Free shipping</strong></label>
-                                            </div>
-                                        </div>
-                                    </div>
+
                                     <div class="col">
-                                        <div class="form-group">
-                                            <div class="custom-control custom-checkbox big">
-                                                <input type="checkbox" class="custom-control-input" id="customCheck">
-                                                <label class="custom-control-label" for="customCheck"><strong>status</strong></label>
-                                            </div>
+                                        <div class="form-group"><label for="ship"><strong>Status: </strong></label>
+                                            <span class="custom-switch m-0">
+                                                <input  class="custom-control-input" wire:model="form.status" id="customSwitch1" type="checkbox" checked  >
+                                                <label class="custom-control-label" for="customSwitch1"></label>
+                                            </span>
                                         </div>
-                                    </div> --}}
+                                    </div> 
                                 </div>    
-                                <button type="submit" class="btn btn-primary btn-block">
+                                <button wire:loading.remove wire:target="save" type="submit" class="btn btn-primary btn-block">
                                     <i class="fas fa-plus"></i> Save
                                 </button>
+                                <center> <div wire:loading wire:target="save"><i class="fas fa-spinner fa-spin fa-2x"></i></div> </center>
                                 <input name="_token" type="hidden" value="{{ csrf_token()}}">
                             </form>
                         </div>

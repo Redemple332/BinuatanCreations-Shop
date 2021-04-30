@@ -46,8 +46,7 @@
                                         >
 
                                         <hr class="sidebar-divider d-none d-md-block">
-
-                                        <div class="bg-gradient-primary" @click="$refs.fileInput.click()">Upload Image</div>
+                                        <div class="btn btn-danger" @click="$refs.fileInput.click()">Upload Image</div>
                             
                                         <input x-ref="fileInput" type="file"  wire:model="photo" hidden>
                                         @error('photo')  <p style="color: orange" class="text-xs">{{ $message }}</p> @enderror

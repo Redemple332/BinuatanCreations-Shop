@@ -4,13 +4,18 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-
+use Cviebrock\EloquentSluggable\Sluggable;
+use BinaryCats\Sku\HasSku;
 class Product extends Model
 {
     
     public $table = 'products';
    
+   
     use HasFactory; 
+    use Sluggable;
+    use HasSku;
+
     protected $fillable = [
         'name',
         'slug',
@@ -19,17 +24,27 @@ class Product extends Model
         'orp',
         'price',
         'sku' ,
-        'image',
+        'gender',
         'tag',
-        'pictures_id',
         'ship',
         'tags'
     ];
+
+    public function sluggable(): array
+    {
+        return [
+            'slug' => [
+                'source' => 'name'
+            ]
+        ];
+    }
 
     public function attributes()
     {
         return $this->hasMany(ProductAttribute::class);
     }
+
+
 
     public function add_attributes()
     {

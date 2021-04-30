@@ -82,4 +82,6 @@ window.addEventListener('closeModalSize', event => {
 window.addEventListener('openModalSize', event => {
     $("#modalSize").modal('show');
 })
+
+
 //------------------MODAL SECTION-------------------//

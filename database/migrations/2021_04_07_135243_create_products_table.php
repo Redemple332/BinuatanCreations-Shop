@@ -14,19 +14,18 @@ class CreateProductsTable extends Migration
     public function up()
     {
         Schema::create('products', function (Blueprint $table) {
-            $table->id()->from('2021000');
+            $table->id();
             $table->string('name')->default('');
             $table->string('slug')->default('');
-            $table->mediumText('description')->default('');
+            $table->mediumText('description')->default('Binuatan Creations');
             $table->unsignedBigInteger('qty')->default(0);
             $table->decimal('orp',10,2)->default(0);
             $table->decimal('price',10,2)->default(0);
             $table->string('sku')->default('');
-            $table->string('image')->default('');
+            $table->string('gender')->default('MEN AND WOMEN');
             $table->mediumText('tags')->default('');
-            $table->string('pictures_id')->default('');
-            $table->boolean('ship')->default(1);
-            $table->boolean('status')->default(0);
+            $table->boolean('ship')->default(0);
+            $table->boolean('status')->default(1);
             $table->timestamps();
         });
     

@@ -65,7 +65,7 @@
             data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">Product promo:</h6>
-                <a class="collapse-item" href="utilities-color.html">Discount%</a>
+                <a class="collapse-item" href="{{ route('admin.discount') }}">Discount%</a>
                 <a class="collapse-item" href="utilities-color.html">Coupon</a>
                 <h6 class="collapse-header">Product advertise:</h6>
                 <a class="collapse-item" href="utilities-color.html">Banners</a>

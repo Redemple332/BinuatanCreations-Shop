@@ -14,17 +14,18 @@
 
                         @if ($photos)
                             @foreach ($photos as $photo)
-
                             <i class="fa fa-times cursor-pointer"aria-hidden="true" wire:click="remove({{$loop->index}})"></i>
                             <img src="{{ $photo->temporaryUrl() }}" width="300">
-                            @endforeach
-                        @else
-                                                                
-                        @if ($image)
-                            <img src="{{ $image }}" width="100">
+                            @endforeach                                       
                         @endif
-                            
+
+                        @if ($images)
+                        @foreach ($images as $image)
+                        <i class="fa fa-times cursor-pointer"aria-hidden="true" wire:click="deleteImage({{$image->id}})"></i>
+                            <img src="{{$image->imagePath}}" width="300">
+                        @endforeach
                         @endif
+                        
                         <br>
                         <div wire:loading wire:target="photos"><i class="fas fa-spinner fa-pulse fa-2x"></i></div> 
 
@@ -55,9 +56,9 @@
                             <p class="text-primary m-0 font-weight-bold">Product Information</p>
                         </div>
                    
-                        <div class="card-body">        
+                        <div class="card-body">    
                                 <div class="form-group"><label for="productname"><strong>Product Name</strong></label>
-                                    <input class="form-control" wire:model="form.name" type="text" placeholder="Enter product name..."  required autofocus>                                  
+                                    <input class="form-control" wire:model="form.name" type="text" placeholder="Enter product name..." required autofocus>                                   
                                 </div>
                                 {{-- DROPDOWN SUGGESSTION --}}
                                 <div class="form-group"><label for="description"><strong>Descrition</strong></label>
@@ -84,8 +85,8 @@
                                     <div class="col">
                                         <div class="form-group"><label for="category"><strong>Category</strong></label>
                                             <div class="input-group">
-                                                <select class="custom-select" wire:model="category">
-                                                    <option selected>Choose...</option>
+                                                <select class="custom-select" wire:model="form.category_id">
+                                                    <option value="none" selected>Choose...</option>
                                                     @foreach($categories as $category )     
                                                          <option value="{{ $category->id }}">{{ $category->category }}</option>     
                                                     @endforeach  
@@ -94,13 +95,14 @@
                                                   <button class="btn btn-outline-secondary" type="button" wire:click="$emit('addCategory')"><i class="fas fa-plus"></i></button>
                                                 </div>
                                             </div>
+                                            @error('form.category_id') <span class="text-xs text-danger">{{ $message }}</span> @enderror  
                                         </div>
                                     </div>
                                     <div class="col">
                                         <div class="form-group"><label for="color"><strong>Color</strong></label>
                                             <div class="input-group">
-                                                <select class="custom-select" wire:model="color">
-                                                    <option selected>Choose...</option>
+                                                <select class="custom-select" wire:model="form.color_id">
+                                                    <option value="none" selected>Choose...</option>
                                                     @foreach($colors as $color )     
                                                          <option value="{{ $color->id }}">{{ $color->name }}</option>     
                                                     @endforeach  
@@ -109,21 +111,24 @@
                                                     <button class="btn btn-outline-secondary" type="button" wire:click="$emit('addColor', '')"><i class="fas fa-plus"></i></button>
                                                 </div>
                                             </div>
+                                            @error('form.color_id') <span class="text-xs text-danger">{{ $message }}</span> @enderror   
                                         </div>
                                     </div>
                                     <div class="col">
                                         <div class="form-group"><label for="size"><strong>Size</strong></label>
                                             <div class="input-group">
-                                                <select class="custom-select" wire:model="size">
-                                                    <option selected>Choose...</option>
+                                                <select class="custom-select" wire:model="form.size_id">
+                                                     <option value="none"selected="">Choose...</option>
                                                     @foreach($sizes as $size )     
                                                         <option value="{{ $size->id }}">{{ $size->name }}</option>     
                                                     @endforeach  
+                                                   
                                                 </select>
                                                 <div class="input-group-append">
                                                     <button class="btn btn-outline-secondary" type="button" wire:click="$emit('addSize', '')"><i class="fas fa-plus"></i></button>
                                                 </div>
                                             </div>
+                                            @error('form.size_id') <span class="text-xs text-danger">{{ $message }}</span> @enderror  
                                         </div>
                                     </div>
                                 </div>
@@ -138,9 +143,6 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="form-group"><label for="tag"><strong>TAGS</strong></label>
-                                    <textarea class="form-control"  wire:model="form.tags" type="text" placeholder="Enter tags....." ></textarea>
-                                </div>
                                 <div class="form-row">
                                     <div class="col">
                                         <div class="form-group"><label for="ship"><strong>Free shipping: </strong></label>
@@ -154,7 +156,7 @@
                                     <div class="col">
                                         <div class="form-group"><label for="ship"><strong>Status: </strong></label>
                                             <span class="custom-switch m-0">
-                                                <input  class="custom-control-input" wire:model="form.status" id="customSwitch1" type="checkbox" checked  >
+                                                <input  class="custom-control-input" wire:model="form.status" id="customSwitch1" type="checkbox" checked >
                                                 <label class="custom-control-label" for="customSwitch1"></label>
                                             </span>
                                         </div>

@@ -50,6 +50,13 @@
                 
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
+                    
+                    @if (session()->has('message'))
+                        <div class="alert alert-success"  role="alert">
+                            {{ session('message') }}
+                        </div>
+                    @endif
+                
                     @yield('content')
                 </div>
 
@@ -92,8 +99,6 @@
 
     <!-- Custom scripts for BinuatanCreations-->
     <script src="{{ asset('admin/js/binuatancreations.js') }}"></script>
-
-    
 
 </body>
 

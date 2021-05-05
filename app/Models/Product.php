@@ -9,13 +9,13 @@ use BinaryCats\Sku\HasSku;
 class Product extends Model
 {
     
-    public $table = 'products';
+
    
    
     use HasFactory; 
     use Sluggable;
     use HasSku;
-
+    protected $table = 'products';
     protected $fillable = [
         'name',
         'slug',
@@ -25,9 +25,11 @@ class Product extends Model
         'price',
         'sku' ,
         'gender',
-        'tag',
         'ship',
-        'tags'
+        'category_id',
+        'color_id',
+        'size_id',
+        'status'
     ];
 
     public function sluggable(): array
@@ -39,15 +41,49 @@ class Product extends Model
         ];
     }
 
-    public function attributes()
+    public function promo(){
+        return $this->hasOne(Promo::class)
+        ->withDefault([
+            'discount' => 'error',
+            'discounted_price' => 'error',
+        ]);
+
+    }
+  
+    public function color() 
     {
-        return $this->hasMany(ProductAttribute::class);
+        return $this->belongsTo(Color::class)
+        ->withDefault([
+            'name' => 'Default-color',
+            'code' => '8ad4eb'
+        ]);
+    }
+
+    public function size() 
+    {
+        return $this->belongsTo(Size::class)
+        ->withDefault([
+            'name' => 'Default-size',
+            'code' => 'R'
+        ]);
+    }
+
+    public function category() 
+    {
+        return $this->belongsTo(Category::class)
+        ->withDefault([
+            'category' => 'Default-category',
+            'code' => 'Others'
+        ]);
+    }
+
+    public function images()
+    {
+        return $this->hasMany(ProductImage::class);
     }
 
 
 
-    public function add_attributes()
-    {
-        return $this->belongsToMany(ProductAttribute::class,'product_attributes');
-    }
+    
+   
 }

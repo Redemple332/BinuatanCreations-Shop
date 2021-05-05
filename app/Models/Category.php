@@ -12,7 +12,7 @@ class Category extends Model
         'category',
         'image'
     ];
-
+ 
 
     public function getImagePathAttribute()
     {

@@ -15,15 +15,17 @@ class CreateProductsTable extends Migration
     {
         Schema::create('products', function (Blueprint $table) {
             $table->id();
-            $table->string('name')->default('');
-            $table->string('slug')->default('');
+            $table->string('name')->nullable();
+            $table->string('slug')->unique();
             $table->mediumText('description')->default('Binuatan Creations');
-            $table->unsignedBigInteger('qty')->default(0);
-            $table->decimal('orp',10,2)->default(0);
-            $table->decimal('price',10,2)->default(0);
-            $table->string('sku')->default('');
+            $table->integer('qty')->nullable();
+            $table->decimal('orp',10,2)->nullable();
+            $table->decimal('price',10,2)->nullable();
+            $table->string('sku')->unique();
             $table->string('gender')->default('MEN AND WOMEN');
-            $table->mediumText('tags')->default('');
+            $table->unsignedBigInteger('color_id')->nullable();
+            $table->unsignedBigInteger('size_id')->nullable();
+            $table->unsignedBigInteger('category_id')->nullable();
             $table->boolean('ship')->default(0);
             $table->boolean('status')->default(1);
             $table->timestamps();

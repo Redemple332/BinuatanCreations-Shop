@@ -42,7 +42,7 @@ class Product extends Model
     }
 
     public function promo(){
-        return $this->hasOne(Promo::class)
+        return $this->hasOne(Discount::class)
         ->withDefault([
             'discount' => 'error',
             'discounted_price' => 'error',

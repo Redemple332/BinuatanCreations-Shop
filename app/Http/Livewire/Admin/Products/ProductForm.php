@@ -7,7 +7,6 @@ use App\Models\Product;
 use App\Models\Size;
 use App\Models\Color;
 use App\Models\Category;
-use App\Models\Promo;
 use App\Models\ProductAttribute;
 use App\Models\ProductImage;
 use Illuminate\Http\Request;
@@ -149,7 +148,7 @@ class ProductForm extends Component
                     'image' => $this->image,
                 ]); 
             }
-            
+
             $message = $newProduct->name.' product added successfully!';
             $this->reset();
         }

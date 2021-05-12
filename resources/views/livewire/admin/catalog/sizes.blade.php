@@ -33,13 +33,13 @@
                               <td>{{ $size->code }}</td>
                               <td class="center"><span class="badge {{ $size->status == 1 ?'badge-success': 'badge-danger' }} badge-counter">{{ $size->status == 1 ?'Active': 'Deactive' }}</span></td>
                               <td class="center">
-                              <span class="custom-switch m-0">
-                                  <input  class="custom-control-input"  wire:click="status({{ $size->id }}, '{{ $size->status }}')" 
-                                   id="customSwitch{{ $size->id }}" type="checkbox" @if ($size->status == 1) checked @endif>
-                                  <label class="custom-control-label" for="customSwitch{{ $size->id }}"></label>
-                              </span>
-                              <button wire:click.prevent="$emit('addSize',{{ $size->id }})" title="Edit" class="btn btn-primary btn-sm" ><span class="fa fa-edit fw-fa"></span></button>
-                                  <button  class="btn btn-danger btn-sm" wire:click.prevent="delete(({{ $size->id }}))"  data-hover="tooltip" title="Delete"><span class="fa fa-trash"></span></button>
+                                <span class="custom-switch m-0">
+                                    <input  class="custom-control-input"  wire:click="status({{ $size->id }}, '{{ $size->status }}')" 
+                                    id="customSwitch{{ $size->id }}" type="checkbox" @if ($size->status == 1) checked @endif>
+                                    <label class="custom-control-label" for="customSwitch{{ $size->id }}"></label>
+                                </span>
+                                <button wire:click.prevent="$emit('addSize',{{ $size->id }})" title="Edit" class="btn btn-primary btn-sm" ><span class="fa fa-edit fw-fa"></span></button>
+                                <button  class="btn btn-danger btn-sm" wire:click.prevent="delete(({{ $size->id }}))"  data-hover="tooltip" title="Delete"><span class="fa fa-trash"></span></button>
                               </td> 
                           </tr>
                       @empty

@@ -83,5 +83,33 @@ window.addEventListener('openModalSize', event => {
     $("#modalSize").modal('show');
 })
 
+//OPEN DISCOUNT
+window.addEventListener('closeModalDiscount', event => {
+    $("#modalDiscount").modal('hide');
+})
 
+//CLOSE DISCOUNT
+window.addEventListener('openModalDiscount', event => {
+    $("#modalDiscount").modal('show');
+})
+
+
+//OPEN COUPON
+window.addEventListener('closeModalCoupon', event => {
+    $("#modalCoupon").modal('hide');
+})
+
+//CLOSE COUPON
+window.addEventListener('openModalCoupon', event => {
+    $("#modalCoupon").modal('show');
+})
 //------------------MODAL SECTION-------------------//
+
+
+
+
+//------------------FLASH MESSAGE SECTION------------\\
+
+setTimeout(function(){
+    $('#successMessage').fadeOut('slow');
+},10000);

@@ -21,8 +21,8 @@
                                     @error('name') <span style="color: orange" class="text-xs">{{ $message }}</span> @enderror
                                 </div>
                                 <div class="form-group">
-                                    <label class="col-form-label" >Color code</label>
-                                    <input type="text" wire:model="code"  class="form-control" required autofocus>
+                                    <label class="col-form-label" >Color picker</label>
+                                    <input type="color" class="form-control form-control-color" value="{{ $code }}" id="exampleColorInput"  title="Choose your color" wire:model="code" required autofocus>
                                     @error('code') <span style="color: orange" class="text-xs">{{ $message }}</span> @enderror
                                 </div>
                             </div>

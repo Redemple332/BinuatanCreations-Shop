@@ -57,7 +57,7 @@ class CreateSize extends Component
         //UPDATE
         if($this->sizeId)
         {
-             Size::findOrFail($this->sizeId)->update([
+            Size::findOrFail($this->sizeId)->update([
                 'name' => $this->name,
                 'code' => $this->code
             ]);

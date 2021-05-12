@@ -19,7 +19,7 @@
                             <th>Attributes</th>
                             <th>Status</th>
                             <th>Prices</th>
-                            <th>Discount%</th>
+                            <th>Discount</th>
                             <th class="center">Quantity</th>
                             <th class="center">Action</th>
                         </tr>
@@ -31,7 +31,7 @@
                             <th>Attributes</th>
                             <th>Status</th>
                             <th>Prices</th>
-                            <th>Discount%</th>
+                            <th>Discount</th>
                             <th class="center">Quantity</th>
                             <th class="center">Action</th>
                         </tr>
@@ -56,8 +56,15 @@
                                
                             </td>
                             <td class="center"><span class="badge {{ $product->status == 1 ?'badge-success': 'badge-danger' }} badge-counter">{{ $product->status == 1 ?'Available': 'Not available' }}</span></td>                     
-                            <td>₱{{ $product->price }}</td>
-                            <td>{{ $product->promo->discount }}% - ₱{{$product->promo->discounted_price}}</td>
+                            <td>&#8369;{{ $product->price }}</td>
+                            
+                            <td>{{ $product->discount->percent }}&#37; - 
+                                &#8369;{{ number_format($product->discounted_price,2) }}
+                                @if ($product->discount->percent == 0)
+                                    <i wire:click="$emit('addDiscount',{{ $product->id }},{{0}})" class="fas fa-plus"></i>     
+                                @endif
+                               
+                            
                             <td class="center">{{ $product->qty }}</td>
                             <td class="center">
                                 <span class="custom-switch m-0">
@@ -74,10 +81,9 @@
                         @endforelse            
                     </tbody>
                 </table>
-        
-             
             </div>
         </div>
     </div>
     <!-- DataTales Example -->
+    @livewire('admin.modals.create-discount');
 </div>

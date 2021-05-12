@@ -79,10 +79,13 @@ class ProductForm extends Component
 
         $sizes = Size::where('status', 1)->orderBy('name', 'ASC')->get();
        
+        $products = Product::select('name')->groupBy('name')->get();
+
         $data = [
             'categories' => $categories,
             'colors' => $colors,
             'sizes' => $sizes,
+            'products' => $products,
            
         ];
  
@@ -129,7 +132,7 @@ class ProductForm extends Component
 
             }
 
-            session()->flash('message', $this->product->name.' product successfully updated.');
+            session()->flash('message', $this->product->name.' product updated successfully');
             return redirect()->to('admin/products');
         }
         

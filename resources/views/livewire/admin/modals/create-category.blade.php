@@ -1,4 +1,5 @@
-<div>
+<div>    
+    <x-loading-indicator />
     <!-- addCategory Modal-->
     <div wire:ignore.self  class="modal fade" id="modalCategory" tabindex="-1" role="dialog" aria-labelledby="category"
     aria-hidden="true">

@@ -17,9 +17,11 @@ class ProductIndex extends Component
 
     public $productId;
     public function render()
-    {
-        $products = Product::all(); 
-      
+     {
+         //(original_price * discount / 100)
+        // $products = Product::with(['color','size','category', 'discount'])->take(3)->get(); 
+      $products = Product::with(['color','size','category','discount'])->take(20)->get(); 
+
         return view('livewire.admin.products.product-index',['products' => $products])->extends('livewire.admin.layouts.app');
     }
 

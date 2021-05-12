@@ -30,7 +30,7 @@
                     @forelse ($colors as $color )
                         <tr>
                             <td>{{ $color->name }}</td>
-                            <td>{{ $color->code }}</td>
+                            <td style="background:{{ $color->code }}">{{ $color->code }}</td>
                             <td class="center"><span class="badge {{ $color->status == 1 ?'badge-success': 'badge-danger' }} badge-counter">{{ $color->status == 1 ?'Active': 'Deactive' }}</span></td>
                             <td class="center">
                             <span class="custom-switch m-0">

@@ -58,7 +58,12 @@
                    
                         <div class="card-body">    
                                 <div class="form-group"><label for="productname"><strong>Product Name</strong></label>
-                                    <input class="form-control" wire:model="form.name" type="text" placeholder="Enter product name..." required autofocus>                                   
+                                    <input class="form-control"   wire:model="form.name"list="datalistOptions"  placeholder="Enter product name...." required autofocus >
+                                    <datalist id="datalistOptions">
+                                        @foreach ($products as $product )
+                                        <option value="{{ $product->name}}">
+                                        @endforeach
+                                    </datalist>                                   
                                 </div>
                                 {{-- DROPDOWN SUGGESSTION --}}
                                 <div class="form-group"><label for="description"><strong>Descrition</strong></label>
@@ -81,14 +86,15 @@
                                         </div>
                                     </div>
                                 </div>
+                                
                                 <div class="form-row">
                                     <div class="col">
                                         <div class="form-group"><label for="category"><strong>Category</strong></label>
                                             <div class="input-group">
-                                                <select class="custom-select" wire:model="form.category_id">
+                                                <select class="form-control input-sm" wire:model="form.category_id">
                                                     <option value="none" selected>Choose...</option>
                                                     @foreach($categories as $category )     
-                                                         <option value="{{ $category->id }}">{{ $category->category }}</option>     
+                                                        <option value="{{ $category->id }}">{{ $category->category }}</option>     
                                                     @endforeach  
                                                 </select>
                                                 <div class="input-group-append">
@@ -101,7 +107,7 @@
                                     <div class="col">
                                         <div class="form-group"><label for="color"><strong>Color</strong></label>
                                             <div class="input-group">
-                                                <select class="custom-select" wire:model="form.color_id">
+                                                <select class="form-control input-sm" wire:model="form.color_id">
                                                     <option value="none" selected>Choose...</option>
                                                     @foreach($colors as $color )     
                                                          <option value="{{ $color->id }}">{{ $color->name }}</option>     
@@ -117,7 +123,7 @@
                                     <div class="col">
                                         <div class="form-group"><label for="size"><strong>Size</strong></label>
                                             <div class="input-group">
-                                                <select class="custom-select" wire:model="form.size_id">
+                                                <select class="form-control input-sm" wire:model="form.size_id">
                                                      <option value="none"selected="">Choose...</option>
                                                     @foreach($sizes as $size )     
                                                         <option value="{{ $size->id }}">{{ $size->name }}</option>     
@@ -174,6 +180,7 @@
             </div>
         </div>
     </div>
+  
     @livewire('admin.modals.create-category')
     @livewire('admin.modals.create-size')
     @livewire('admin.modals.create-color')

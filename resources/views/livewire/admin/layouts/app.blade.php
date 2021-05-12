@@ -6,7 +6,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>SB Admin 2 - Buttons</title>
+    <title>{{ $page_title ?? 'BC Admin'}}</title>
 
     <!-- Custom fonts for this template-->
     <link href="{{ asset('admin/vendor/fontawesome-free/css/all.min.css') }}" rel="stylesheet" type="text/css">
@@ -52,26 +52,24 @@
                 <div class="container-fluid">
                     
                     @if (session()->has('message'))
-                        <div class="alert alert-success"  role="alert">
+                        <div wire:ignore id="successMessage" class="alert alert-success"  role="alert">
                             {{ session('message') }}
                         </div>
                     @endif
                 
                     @yield('content')
                 </div>
-
-                
+                          
             </div>
             <!-- End of Main Content -->
             
             @livewire('admin.layouts.footer')
-
         </div>
         <!-- End of Content Wrapper -->
 
     </div>
     <!-- End of Page Wrapper -->                 
-
+  
     <!-- End of Page Wrapper -->
     <!-- Bootstrap core JavaScript-->
     <script src="{{ asset('admin/vendor/jquery/jquery.min.js') }}"></script>
@@ -100,6 +98,8 @@
     <!-- Custom scripts for BinuatanCreations-->
     <script src="{{ asset('admin/js/binuatancreations.js') }}"></script>
 
+  
+ 
 </body>
 
 

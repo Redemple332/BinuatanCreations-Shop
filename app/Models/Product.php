@@ -41,11 +41,12 @@ class Product extends Model
         ];
     }
 
-    public function promo(){
+    public function discount(){
+        
         return $this->hasOne(Discount::class)
         ->withDefault([
-            'discount' => 'error',
-            'discounted_price' => 'error',
+            'percent' => '0',
+            'price' => '0',
         ]);
 
     }
@@ -81,9 +82,13 @@ class Product extends Model
     {
         return $this->hasMany(ProductImage::class);
     }
+ 
+ 
 
-
-
-    
+    public function getDiscountedPriceAttribute()
+    {
+        return ceil($this->price-($this->price*$this->discount->percent/100));
+    }
+ 
    
 }

@@ -1,4 +1,5 @@
 <div>
+
     <!-- addCategory Modal-->
     <div wire:ignore.self  class="modal fade" id="modalSize" tabindex="-1" role="dialog" aria-labelledby="category"
     aria-hidden="true">
@@ -30,7 +31,7 @@
                     </div>
                     <div class="modal-footer">
                         <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                        <button class="btn btn-primary" type="submit">Save</button>
+                        <button class="btn btn-primary" type="submit">Save</button> 
                     </div>
                 </form> 
 

@@ -49,8 +49,7 @@
                 <h6 class="collapse-header">Product settings:</h6>
                 <a class="collapse-item" href="{{ route('admin.category') }}">Categories</a>
                 <a class="collapse-item" href="{{ route('admin.color') }}">Colors</a>
-                <a class="collapse-item" href="{{ route('admin.size') }}">Sizes</a>
-                <a class="collapse-item" href="{{ route('admin.image') }}">Images</a>
+                <a class="collapse-item" href="{{ route('admin.size') }}">Sizes</a>           
             </div>
         </div>
     </li>
@@ -66,7 +65,7 @@
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">Product promo:</h6>
                 <a class="collapse-item" href="{{ route('admin.discount') }}">Discount%</a>
-                <a class="collapse-item" href="utilities-color.html">Coupon</a>
+                <a class="collapse-item" href="{{ route('admin.coupon') }}">Coupon</a>
                 <h6 class="collapse-header">Product advertise:</h6>
                 <a class="collapse-item" href="utilities-color.html">Banners</a>
                 <a class="collapse-item" href="utilities-color.html">Ads</a>           

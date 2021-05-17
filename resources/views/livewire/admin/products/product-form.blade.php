@@ -66,9 +66,11 @@
                                     </datalist>                                   
                                 </div>
                                 {{-- DROPDOWN SUGGESSTION --}}
-                                <div class="form-group"><label for="description"><strong>Descrition</strong></label>
-                                    <textarea class="form-control" wire:model="form.description" type="text"  placeholder="Enter product description" required autofocus></textarea>
+
+                                <div wire:ignore class="form-group"><label for="description"><strong>Descrition</strong></label>
+                                    <textarea id="description" data-note="@this" wire:model.defer="form.description" class="form-control">{!! $form['description'] !!}</textarea>
                                 </div>
+        
                                 <div class="form-row">
                                     <div class="col">
                                         <div class="form-group"><label for="quantity"><strong>Quantity</strong></label>
@@ -168,7 +170,7 @@
                                         </div>
                                     </div> 
                                 </div>    
-                                <button wire:loading.remove wire:target="save" type="submit" class="btn btn-primary btn-block">
+                                <button id="submit" wire:loading.remove wire:target="save" type="submit" class="btn btn-primary btn-block">
                                     <i class="fas fa-plus"></i> Save
                                 </button>
                                 <center> <div wire:loading wire:target="save"><i class="fas fa-spinner fa-spin fa-2x"></i></div> </center>
@@ -180,7 +182,26 @@
             </div>
         </div>
     </div>
-  
+    
+    @push('scripts-ckeditor')
+
+    <script src="https://cdn.ckeditor.com/ckeditor5/25.0.0/classic/ckeditor.js"></script>
+    <script>
+        ClassicEditor
+        
+        .create( document.querySelector( '#description' ) )
+        .then( editor => {
+            
+            document.querySelector('#submit').addEventListener('click', () => {
+                let description = $('#description').data('note');
+                eval(description).set('form.description', editor.getData());
+            });
+        } )
+        .catch( error => {
+                console.error( error );
+        } );
+    </script>
+    @endpush
     @livewire('admin.modals.create-category')
     @livewire('admin.modals.create-size')
     @livewire('admin.modals.create-color')

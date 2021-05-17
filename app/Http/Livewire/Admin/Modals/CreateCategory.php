@@ -26,18 +26,11 @@ class CreateCategory extends Component
     }
 
     
-    private function clearVars()
-    {
-        $this->category = null;
-        $this->photo = null;
-        $this->categoryId = null;
-        $this->image = null;
-    }
 
     //Show modal add
     public function addCategory()
     {
-        $this->clearVars();
+        $this->reset();
         $this->dispatchBrowserEvent('openModalCategory');
     }
 
@@ -92,7 +85,7 @@ class CreateCategory extends Component
             $message = $this->category.' category added successfully!';
         }
         $this->emit('updatedCategories');
-        $this->clearVars();
+        $this->reset();
         $this->dispatchBrowserEvent('closeModalCategory');
         $this->dispatchBrowserEvent('successAlert', ['message' => $message]);
      

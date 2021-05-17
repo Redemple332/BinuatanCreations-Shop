@@ -21,7 +21,7 @@ class ProductForm extends Component
     public $photos = [];
     public  $images;
     public $color,$size,$category;
-    public $product;
+    public $product,$description;
 
     public $form = [
 
@@ -110,7 +110,7 @@ class ProductForm extends Component
 
     public function save()
     {
-           
+     
         $this->Validation();
 
         if($this->product){
@@ -178,7 +178,6 @@ class ProductForm extends Component
       
         $this->validate([
             'form.name' => 'required',
-            'form.description'  => 'required',
             'form.qty'  => 'required|numeric',
             'form.orp'  => 'required|numeric',
             'form.price'  => 'required|numeric',

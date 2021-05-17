@@ -47,9 +47,9 @@
             data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">Product settings:</h6>
-                <a class="collapse-item" href="{{ route('admin.category') }}">Categories</a>
-                <a class="collapse-item" href="{{ route('admin.color') }}">Colors</a>
-                <a class="collapse-item" href="{{ route('admin.size') }}">Sizes</a>           
+                <a class="collapse-item" href="{{ route('admin.categories') }}">Categories</a>
+                <a class="collapse-item" href="{{ route('admin.colors') }}">Colors</a>
+                <a class="collapse-item" href="{{ route('admin.sizes') }}">Sizes</a>           
             </div>
         </div>
     </li>
@@ -64,10 +64,10 @@
             data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">Product promo:</h6>
-                <a class="collapse-item" href="{{ route('admin.discount') }}">Discount%</a>
-                <a class="collapse-item" href="{{ route('admin.coupon') }}">Coupon</a>
+                <a class="collapse-item" href="{{ route('admin.discounts') }}">Discount%</a>
+                <a class="collapse-item" href="{{ route('admin.coupons') }}">Coupon</a>
                 <h6 class="collapse-header">Product advertise:</h6>
-                <a class="collapse-item" href="utilities-color.html">Banners</a>
+                <a class="collapse-item" href="{{ route('admin.banners') }}">Banners</a>
                 <a class="collapse-item" href="utilities-color.html">Ads</a>           
             </div>
         </div>

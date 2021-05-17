@@ -12,7 +12,7 @@ class CouponIndex extends Component
 
     public function render()
     {
-        return view('livewire.admin.promo.coupon-index',['coupons' =>Coupon::all()])->extends('livewire.admin.layouts.app');;
+        return view('livewire.admin.promo.coupon-index',['coupons' =>Coupon::all()])->extends('livewire.admin.layouts.app');
     }
 
     public function delete($couponId){

@@ -29,22 +29,16 @@ class CreateSize extends Component
         }
 
         else{
-            $this->clearVars();
+            $this->reset();
         }
         $this->dispatchBrowserEvent('openModalSize');
     }
 
  
 
-    private function clearVars()
+    //Save Category
+    public function save()
     {
-        $this->name = null;
-        $this->code = null;
-    }
-
-
-     //Save Category
-     public function save(){
 
 
         $this->validate([
@@ -61,7 +55,7 @@ class CreateSize extends Component
                 'name' => $this->name,
                 'code' => $this->code
             ]);
-       
+        
             $message = $this->name.' size updated successfully!';
         }
         
@@ -75,9 +69,9 @@ class CreateSize extends Component
             $message = $this->name.' size added successfully!';
         }
         $this->emit('updatedSizes');
-        $this->clearVars();
+        $this->reset();
         $this->dispatchBrowserEvent('closeModalSize');
         $this->dispatchBrowserEvent('successAlert', ['message' => $message]);
-     
+    
     }
 }

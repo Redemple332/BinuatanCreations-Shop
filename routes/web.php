@@ -15,6 +15,7 @@ use App\Http\Livewire\Admin\Catalog\Sizes;
 
 use App\Http\Livewire\Admin\Promo\DiscountIndex;
 use App\Http\Livewire\Admin\Promo\CouponIndex;
+use App\Http\Livewire\Admin\Promo\BannerIndex;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -31,13 +32,14 @@ Route::get('/admin/products/create', ProductCreate::class)->name('admin.product.
 Route::get('/admin/products/{product}', ProductEdit::class)->name('admin.product.edit');
 
 //CATALOG
-Route::get('/admin/catalog/categories', Categories::class)->name('admin.category');
-Route::get('/admin/catalog/sizes', Sizes::class)->name('admin.size');
-Route::get('/admin/catalog/colors', Colors::class)->name('admin.color');
+Route::get('/admin/catalog/categories', Categories::class)->name('admin.categories');
+Route::get('/admin/catalog/sizes', Sizes::class)->name('admin.sizes');
+Route::get('/admin/catalog/colors', Colors::class)->name('admin.colors');
 
 //Promo
-Route::get('/admin/promo/discounts', DiscountIndex::class)->name('admin.discount');
-Route::get('/admin/promo/coupons', CouponIndex::class)->name('admin.coupon');
+Route::get('/admin/promo/discounts', DiscountIndex::class)->name('admin.discounts');
+Route::get('/admin/promo/coupons', CouponIndex::class)->name('admin.coupons');
+Route::get('/admin/promo/banners', BannerIndex::class)->name('admin.banners');
 
 
 Route::get('/admin/orders', Orders::class)->name('admin.orders');

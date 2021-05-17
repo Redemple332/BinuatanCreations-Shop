@@ -30,22 +30,18 @@ class CreateColor extends Component
         }
 
         else{
-            $this->clearVars();
+            $this->reset();
         }
         $this->dispatchBrowserEvent('openModalColor');
     }
 
  
 
-    private function clearVars()
-    {
-        $this->name = null;
-        $this->code = null;
-    }
 
 
-     //Save Category
-     public function save(){
+
+    //Save Category
+    public function save(){
 
 
         $this->validate([
@@ -76,7 +72,7 @@ class CreateColor extends Component
             $message = $this->name.' color added successfully!';
         }
         $this->emit('updatedColors');
-        $this->clearVars();
+       $this->reset(); 
         $this->dispatchBrowserEvent('closeModalColor');
         $this->dispatchBrowserEvent('successAlert', ['message' => $message]);
      

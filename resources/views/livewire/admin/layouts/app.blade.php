@@ -56,7 +56,6 @@
                             {{ session('message') }}
                         </div>
                     @endif
-                
                     @yield('content')
                 </div>
                           
@@ -97,8 +96,9 @@
 
     <!-- Custom scripts for BinuatanCreations-->
     <script src="{{ asset('admin/js/binuatancreations.js') }}"></script>
-
-  
+    
+    <!-- CK EDITOR -->
+    @stack('scripts-ckeditor')
  
 </body>
 

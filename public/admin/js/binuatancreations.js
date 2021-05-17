@@ -113,3 +113,5 @@ window.addEventListener('openModalCoupon', event => {
 setTimeout(function(){
     $('#successMessage').fadeOut('slow');
 },10000);
+
+

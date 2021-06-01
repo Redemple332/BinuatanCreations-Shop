@@ -1,6 +1,11 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+
+use App\Http\Livewire\Admin\Auth\AdminLogin;
+
+
+
 use App\Http\Livewire\Admin\Dashboard\Dashboard;
 
 use App\Http\Livewire\Admin\Products\ProductIndex;
@@ -16,6 +21,9 @@ use App\Http\Livewire\Admin\Catalog\Sizes;
 use App\Http\Livewire\Admin\Promo\DiscountIndex;
 use App\Http\Livewire\Admin\Promo\CouponIndex;
 use App\Http\Livewire\Admin\Promo\BannerIndex;
+
+use App\Http\Controllers\Auth\AdminForgotPasswordController;
+use App\Http\Controllers\Auth\AdminResetPasswordController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -26,22 +34,46 @@ use App\Http\Livewire\Admin\Promo\BannerIndex;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/admin/dashboard', Dashboard::class)->name('admin.dashboard');
-Route::get('/admin/products', ProductIndex::class)->name('admin.products');
-Route::get('/admin/products/create', ProductCreate::class)->name('admin.product.create');
-Route::get('/admin/products/{product}', ProductEdit::class)->name('admin.product.edit');
+Route::get('admin/login', AdminLogin::class)->middleware('guest:admin')->name('admin.login');
+Route::get('admin/dashboard', Dashboard::class)->middleware('auth:admin')->name('admin.dashboard');
+Route::get('/admin/orders', Orders::class)->middleware('auth:admin')->name('admin.orders');
 
-//CATALOG
-Route::get('/admin/catalog/categories', Categories::class)->name('admin.categories');
-Route::get('/admin/catalog/sizes', Sizes::class)->name('admin.sizes');
-Route::get('/admin/catalog/colors', Colors::class)->name('admin.colors');
+Route::group(['middleware' => 'guest:admin','prefix' => 'admin/password', 'as' => 'admin.password.'], function(){
+    Route::post('/email',[AdminForgotPasswordController::class, 'sendResetLinkEmail'])->name('email');
+    Route::get('/reset',[AdminForgotPasswordController::class, 'showLinkRequestForm'])->name('request');
+    Route::post('/reset',[AdminResetPasswordController::class,'reset']);
+    Route::get('/reset/{token}',[AdminResetPasswordController::class,'showResetForm'])->name('reset');
+});
 
-//Promo
-Route::get('/admin/promo/discounts', DiscountIndex::class)->name('admin.discounts');
-Route::get('/admin/promo/coupons', CouponIndex::class)->name('admin.coupons');
-Route::get('/admin/promo/banners', BannerIndex::class)->name('admin.banners');
+//Products
+Route::group(['middleware' => 'auth:admin', 'prefix' => 'admin/products', 'as' => 'admin.'], function(){
+   
+    Route::get('/', ProductIndex::class)->name('products');
+    Route::get('/create', ProductCreate::class)->name('product.create');
+    Route::get('/{product}', ProductEdit::class)->name('product.edit');
+    
+});
+
+// Catalogs
+Route::group(['middleware' => 'auth:admin', 'prefix' => 'admin/catalog', 'as' => 'admin.'], function(){
+    
+    Route::get('/categories', Categories::class)->name('categories');
+    Route::get('/sizes', Sizes::class)->name('sizes');
+    Route::get('/colors', Colors::class)->name('colors');
+
+});
+
+//Promos
+Route::group(['middleware' => 'auth:admin', 'prefix' => 'admin/promo', 'as' => 'admin.'], function(){
+   
+    Route::get('/discounts', DiscountIndex::class)->name('discounts');
+    Route::get('/coupons', CouponIndex::class)->name('coupons');
+    Route::get('/banners', BannerIndex::class)->name('banners');
+
+});
 
 
-Route::get('/admin/orders', Orders::class)->name('admin.orders');
 
+Auth::routes();
 
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

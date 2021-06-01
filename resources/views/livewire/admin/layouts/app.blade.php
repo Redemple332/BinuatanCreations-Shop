@@ -31,6 +31,7 @@
     <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.8.2/dist/alpine.min.js" defer></script>
 </head>
 
+@auth('admin')
 <body id="page-top">
     <!-- Page Wrapper -->
     <div id="wrapper">
@@ -50,13 +51,17 @@
                 
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
-                    
+                @endauth  
+                               
                     @if (session()->has('message'))
                         <div wire:ignore id="successMessage" class="alert alert-success"  role="alert">
                             {{ session('message') }}
                         </div>
                     @endif
+
                     @yield('content')
+
+                @auth('admin')       
                 </div>
                           
             </div>
@@ -65,7 +70,7 @@
             @livewire('admin.layouts.footer')
         </div>
         <!-- End of Content Wrapper -->
-
+        @endauth
     </div>
     <!-- End of Page Wrapper -->                 
   
@@ -96,10 +101,11 @@
 
     <!-- Custom scripts for BinuatanCreations-->
     <script src="{{ asset('admin/js/binuatancreations.js') }}"></script>
-    
+
     <!-- CK EDITOR -->
     @stack('scripts-ckeditor')
- 
+
+   
 </body>
 
 

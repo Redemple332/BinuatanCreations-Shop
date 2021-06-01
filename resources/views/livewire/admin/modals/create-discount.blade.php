@@ -32,7 +32,7 @@
                                                     <span class="input-group-text">{{ $discounted_price }}</span>
                                                 </div>
                                             </div>   
-                                            @error('discount') <span class="text-xs">{{ $message }}</span> @enderror      
+                                            @error('discount') <span class="text-xs text-danger">{{ $message }}</span> @enderror      
                                         </div>
                                         <div class="form-row">
                                             <div class="col">

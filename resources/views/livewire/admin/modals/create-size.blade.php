@@ -19,12 +19,12 @@
                                 <div class="form-group">
                                     <label class="col-form-label">Size name</label>
                                     <input type="text" wire:model="name"  class="form-control" required autofocus>
-                                    @error('name') <span style="color: orange" class="text-xs">{{ $message }}</span> @enderror
+                                    @error('name') <span class="text-xs text-danger">{{ $message }}</span> @enderror
                                 </div>
                                 <div class="form-group">
                                     <label class="col-form-label" >Size code</label>
                                     <input type="text" wire:model="code"  class="form-control" required autofocus>
-                                    @error('code') <span style="color: orange" class="text-xs">{{ $message }}</span> @enderror
+                                    @error('code') <span class="text-xs text-danger">{{ $message }}</span> @enderror
                                 </div>
                             </div>
                         </div>

@@ -20,7 +20,7 @@
                                     <label class="col-form-label" for="modal-input-name">Category name</label>
                                     
                                     <input type="text" wire:model="category"  class="form-control" required autofocus>
-                                    @error('category') <span style="color: orange" class="text-xs">{{ $message }}</span> @enderror
+                                    @error('category') <span class="text-xs text-danger">{{ $message }}</span> @enderror
                                 </div>
                                 <div class="form-group">
                                     <center>
@@ -50,7 +50,7 @@
                                         <div class="btn btn-danger" @click="$refs.fileInput.click()">Upload Image</div>
                             
                                         <input x-ref="fileInput" type="file"  wire:model="photo" hidden>
-                                        @error('photo')  <p style="color: orange" class="text-xs">{{ $message }}</p> @enderror
+                                        @error('photo')  <p class="text-xs  text-danger">{{ $message }}</p> @enderror
                                     </center>
                                 </div>
                             </div>

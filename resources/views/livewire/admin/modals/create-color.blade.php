@@ -18,12 +18,12 @@
                                 <div class="form-group">
                                     <label class="col-form-label">Color name</label>
                                     <input type="text" wire:model="name"  class="form-control" required autofocus>
-                                    @error('name') <span style="color: orange" class="text-xs">{{ $message }}</span> @enderror
+                                    @error('name') <span class="text-xs text-danger">{{ $message }}</span> @enderror
                                 </div>
                                 <div class="form-group">
                                     <label class="col-form-label" >Color picker</label>
                                     <input type="color" class="form-control form-control-color" value="{{ $code }}" id="exampleColorInput"  title="Choose your color" wire:model="code" required autofocus>
-                                    @error('code') <span style="color: orange" class="text-xs">{{ $message }}</span> @enderror
+                                    @error('code') <span  class="text-xs text-danger">{{ $message }}</span> @enderror
                                 </div>
                             </div>
                         </div>

@@ -7,6 +7,8 @@ use Livewire\Component;
 class Dashboard extends Component
 {
    
+    
+
     public $jan = 50000; 
 
 

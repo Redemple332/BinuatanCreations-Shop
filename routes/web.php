@@ -24,6 +24,13 @@ use App\Http\Livewire\Admin\Promo\BannerIndex;
 
 use App\Http\Controllers\Auth\AdminForgotPasswordController;
 use App\Http\Controllers\Auth\AdminResetPasswordController;
+
+//Customer
+use App\Http\Livewire\Pages\HOME;
+use App\Http\Livewire\Pages\PRODUCTS;
+
+
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -34,6 +41,23 @@ use App\Http\Controllers\Auth\AdminResetPasswordController;
 | contains the "web" middleware group. Now create something great!
 |
 */
+//Customers
+Route::get('/',Home::class)->name('home');
+Route::get('/products',PRODUCTS::class)->name('products');
+
+
+
+
+
+
+
+
+
+
+
+
+
+//Admin
 Route::get('admin/login', AdminLogin::class)->middleware('guest:admin')->name('admin.login');
 Route::get('admin/dashboard', Dashboard::class)->middleware('auth:admin')->name('admin.dashboard');
 Route::get('/admin/orders', Orders::class)->middleware('auth:admin')->name('admin.orders');
@@ -76,4 +100,4 @@ Route::group(['middleware' => 'auth:admin', 'prefix' => 'admin/promo', 'as' => '
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

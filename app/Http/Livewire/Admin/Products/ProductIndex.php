@@ -4,7 +4,6 @@ namespace App\Http\Livewire\Admin\Products;
 
 use Livewire\Component;
 use App\Models\Product;
-use App\Models\ProductAttribute;
 
 class ProductIndex extends Component
 {

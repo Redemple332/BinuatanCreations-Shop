@@ -23,9 +23,9 @@ class CreateProductsTable extends Migration
             $table->decimal('price',10,2);
             $table->string('sku')->unique();
             $table->enum('gender',['Men', 'Women'])->nullable();
-            $table->unsignedBigInteger('color_id')->nullable();
-            $table->unsignedBigInteger('size_id')->nullable();
-            $table->unsignedBigInteger('category_id')->nullable();
+            $table->foreignId('color_id')->constrained();
+            $table->foreignId('size_id')->constrained();
+            $table->foreignId('category_id')->constrained();
             $table->boolean('ship')->default(0);
             $table->boolean('status')->default(1);
             $table->timestamps();
@@ -33,7 +33,9 @@ class CreateProductsTable extends Migration
     
     
     }
-
+    // $table->unsignedBigInteger('color_id')->nullable();
+    // $table->unsignedBigInteger('size_id')->nullable();
+    // $table->unsignedBigInteger('category_id')->nullable();
     /**
      * Reverse the migrations.
      *

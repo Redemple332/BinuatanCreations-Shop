@@ -9,13 +9,17 @@ use BinaryCats\Sku\HasSku;
 class Product extends Model
 {
     
-
-   
-   
     use HasFactory; 
     use Sluggable;
     use HasSku;
+
     protected $table = 'products';
+
+    const GENDER = [
+        'MEN',
+        'WOMEN'
+    ];
+
     protected $fillable = [
         'name',
         'slug',
@@ -89,6 +93,31 @@ class Product extends Model
     {
         return ceil($this->price-($this->price*$this->discount->percent/100));
     }
- 
+    
+
+    public function scopeWithFilters($query, $colors, $sizes, $gender)
+    {
+
+        return $query->when(count($colors), function ($query) use ($colors){
+            $query->whereIn('color_id', $colors);
+        })
+        
+        ->when(count($sizes), function ($query) use ($sizes){
+            $query->whereIn('size_id', $sizes);
+        })
+        
+        ->when(count($gender), function ($query) use ($gender){
+            $query->where(function ($query) use ($gender) {
+                $query->when(in_array(0, $gender), function ($query) {
+                    $query->orWhere('gender', 'Men');
+                })
+                ->when(in_array(1, $gender), function ($query) {
+                    $query->orWhere('gender', 'Women');
+                });
+            });
+        });
+        
+    
+    }
    
 }

@@ -105,7 +105,9 @@
     <!-- CK EDITOR -->
     @stack('scripts-ckeditor')
 
-   
+    <!--TURBOLINKS SPA-->
+    {{-- <script src="https://cdn.jsdelivr.net/npm/turbolinks@5.3.0-beta.1/dist/turbolinks.min.js"></script> 
+    <script src="https://cdn.jsdelivr.net/gh/livewire/turbolinks@v0.1.x/dist/livewire-turbolinks.js" data-turbolinks-eval="false"></script> --}}
 </body>
 
 

@@ -30,7 +30,7 @@ class GenderService
 
     private function getProductCount($index)
     {
-        return Product::withFilters($this->colors, $this->sizes,$this->gender)
+        return Product::withFilters($this->colors, $this->sizes, $this->gender)
             ->when($index == 0, function ($query) {
                 $query->where('gender', 'Men');
             })

@@ -26,8 +26,8 @@ use App\Http\Controllers\Auth\AdminForgotPasswordController;
 use App\Http\Controllers\Auth\AdminResetPasswordController;
 
 //Customer
-use App\Http\Livewire\Pages\HOME;
-use App\Http\Livewire\Pages\PRODUCTS;
+use App\Http\Controllers\PagesController;
+
 
 
 
@@ -42,8 +42,9 @@ use App\Http\Livewire\Pages\PRODUCTS;
 |
 */
 //Customers
-Route::get('/',Home::class)->name('home');
-Route::get('/products',PRODUCTS::class)->name('products');
+Route::get('/',[PagesController::class,'home'])->name('home');
+Route::get('/products',[PagesController::class,'products'])->name('products');
+
 
 
 
@@ -98,6 +99,6 @@ Route::group(['middleware' => 'auth:admin', 'prefix' => 'admin/promo', 'as' => '
 
 
 
-Auth::routes();
+// Auth::routes();
 
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

@@ -34,7 +34,7 @@
     <!-- /aside widget -->
 
     <!-- aside widget -->
-    <div class="aside">
+    <div wire:ignore class="aside">
         <h3 class="aside-title">Filter by Price</h3>
         <div id="price-slider"></div>
     </div>
@@ -64,7 +64,7 @@
         <h3 class="aside-title">Filter By Size:</h3>
         <ul class="color-option">
             @foreach ($colors as $index => $color)
-            <li class="active"><input type="checkbox" id="size{{ $index }}" value="{{ $color->id }}" wire:model="selected.colors">
+            <li class="active"><input wire:model="selected.colors" type="checkbox" id="size{{ $index }}" value="{{ $color->id }}" >
                 <span style="color:{{ $color['code']}}">{{ $color['name'] }}</span>({{ $color['products_count'] }})
             </li>
             @endforeach
@@ -77,7 +77,7 @@
         <h3 class="aside-title">Filter By Size:</h3>
         <ul class="size-option">
             @foreach ($sizes as $index => $size)
-                <li class="active"><input type="checkbox" id="size{{ $index }}" value="{{ $size->id }}" wire:model="selected.sizes">
+                <li  class="active"><input wire:model="selected.sizes" type="checkbox" id="size{{ $index }}" value="{{ $size->id }}" >
                     {{ $size['code'] }}({{ $size['products_count'] }})
                 </li>
             @endforeach
@@ -91,7 +91,7 @@
         <ul class="list-links">
             <li class="active"><a href="#">ALL</a></li>
             @foreach($genders as $index => $gender)
-                <li> <input type="checkbox" id="gender{{ $index }}"  value="{{ $index }}" wire:model="selected.gender"> 
+                <li> <input wire:model="selected.gender" type="checkbox" id="gender{{ $index }}"  value="{{ $index }}" > 
                     <a href="#">{{ $gender['name'] }} ({{ $gender['products_count'] }})</a>
                 </li>
             @endforeach
@@ -144,4 +144,5 @@
     <!-- /aside widget -->
 </div>
 <!-- /ASIDE -->
+
 </div>

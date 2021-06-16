@@ -30,7 +30,6 @@
 
 	<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
 	@livewireStyles
-	@livewireScripts
 </head>
 
 
@@ -215,12 +214,12 @@
 	</div>
 	<!-- /NAVIGATION -->
   
-	
-        {{ $slot }}
+	@yield('content')
     
 
 @include('layouts.footer')
 
+@livewireScripts
 <!-- jQuery Plugins -->
 <script src="{{ asset('js/jquery.min.js') }}"></script>
 <script src="{{ asset('js/bootstrap.min.js') }}"></script>

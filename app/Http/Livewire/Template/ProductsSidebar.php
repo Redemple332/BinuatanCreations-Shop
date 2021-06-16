@@ -36,9 +36,10 @@ class ProductsSidebar extends Component
         }])->get();
 
         $genders = $genderService->getGender(
+            [],
             $this->selected['colors'],
             $this->selected['sizes'],
-            [],
+            
         );
 
 
@@ -50,4 +51,6 @@ class ProductsSidebar extends Component
         
         $this->emit('updatedFilter', $this->selected);
     }
+
+ 
 }

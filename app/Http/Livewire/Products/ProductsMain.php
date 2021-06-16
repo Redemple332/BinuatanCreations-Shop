@@ -1,19 +1,21 @@
 <?php
 
-namespace App\Http\Livewire\Pages;
+namespace App\Http\Livewire\Products;
 
 use Livewire\Component;
 use App\Models\Product;
 use Livewire\WithPagination;
-class Products extends Component
+
+class ProductsMain extends Component
 {
+
     use WithPagination;
 
     public $search;
     public $pagination = 1;
     public $orderBy = 'DESC';
     public $sortBy = 'name';
-
+    
     public $selected = [
         'colors' => [],
         'sizes' => [],
@@ -25,7 +27,7 @@ class Products extends Component
     protected $queryString = [
         'orderBy' => ['except' => 'DESC'],
         'search' => ['except' => ''],
-        'sortBy' => ['except' => 'price'],
+        'sortBy' => ['except' => 'name'],
     ];
 
 
@@ -38,10 +40,12 @@ class Products extends Component
             $this->selected['gender']
             
         )
+        ->where('qty','>', 0)
+        ->where('status', 1)
         ->orderBy($this->sortBy, $this->orderBy)
         ->paginate($this->pagination);
         
-        return view('livewire.pages.products',compact('products'));
+        return view('livewire.products.products-main',compact('products'));
     }
 
     public function orderBy()
@@ -64,9 +68,11 @@ class Products extends Component
         $this->resetPage();
     }
 
-   
+  
     public function updatedPagination()
     {
         $this->resetPage(); 
     }
 }
+
+

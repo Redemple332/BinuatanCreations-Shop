@@ -99,6 +99,6 @@ Route::group(['middleware' => 'auth:admin', 'prefix' => 'admin/promo', 'as' => '
 
 
 
-// Auth::routes();
+Auth::routes();
 
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

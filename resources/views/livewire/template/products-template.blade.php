@@ -1,7 +1,7 @@
 <div>
 
     <!-- Product Single -->
-        <div class="product product-single">
+        <div class="product product-single ">
             <div class="product-thumb">
                 <div class="product-label">
                     @if ($product->updated_at->diffinDays() < 30)
@@ -13,14 +13,16 @@
                     
                 </div>
                 
-                @if($product->discount->date)
+                @if($product->discount->date > now())
                     <livewire:template.products-countdown :flashsale="$product->discount->date" :wire:key="'product-countdown-'.$product->id">
                 @endif
 
                 <button class="main-btn quick-view"><i class="fa fa-search-plus"></i> Quick view</button>
                 
                 @forelse ( $product->images->take(1) as $image )
-                    <img src="{{$image->imagePath}}" alt=""> 
+                    {{-- <img src="{{$image->imagePath}}" alt="">  --}}
+                    <img  src="{{asset('storage/product_images/'.$image->image )}}" alt="">
+                
                 @empty
                 <img src="no_image.jpg" alt=""> 
                 @endforelse     

@@ -40,6 +40,7 @@ class ProductsMain extends Component
             $this->selected['gender']
             
         )
+        ->groupBy('name')
         ->where('qty','>', 0)
         ->where('status', 1)
         ->orderBy($this->sortBy, $this->orderBy)

@@ -38,6 +38,7 @@
     <div id="store">
         <!-- row -->
         <div class="row">
+            
             @forelse ($products as $product)
                 <div class="col-md-4 col-sm-6 col-xs-6">	
                     <livewire:template.products-template :product="$product" :wire:key="'product-template-'.$product->id">

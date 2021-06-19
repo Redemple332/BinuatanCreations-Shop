@@ -64,9 +64,9 @@
         <h3 class="aside-title">Filter By Size:</h3>
         <ul class="color-option">
             @foreach ($colors as $index => $color)
-            <li class="active"><input wire:model="selected.colors" type="checkbox" id="size{{ $index }}" value="{{ $color->id }}" >
+               <li class="active"><input wire:model="selected.colors" type="checkbox" id="size{{ $index }}" value="{{ $color->id }}" >
                 <span style="color:{{ $color['code']}}">{{ $color['name'] }}</span>({{ $color['products_count'] }})
-            </li>
+                </li>
             @endforeach
         </ul>
     </div>

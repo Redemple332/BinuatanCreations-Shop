@@ -34,7 +34,7 @@
 
 
 <body>
-	@livewire('header')
+	@include('layouts.header')
 	<!-- NAVIGATION -->
 	<div id="navigation">
 		<!-- container -->

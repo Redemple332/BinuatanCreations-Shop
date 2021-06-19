@@ -95,6 +95,22 @@ class Product extends Model
     }
     
 
+    public function scopeWithFlashSale($query,$WH='discount'){
+        return  $query->whereHas($WH, function ($query){
+            $query->where('date','>', now());
+
+            
+        }); 
+    }
+
+    public function scopeWithSale($query,$WH='discount'){
+        return  $query->whereHas($WH, function ($query){
+            $query->where('percent','!=','');   
+            $query->where('date', '');
+        }); 
+    }
+
+
     public function scopeWithFilters($query, $colors, $sizes, $gender)
     {
 

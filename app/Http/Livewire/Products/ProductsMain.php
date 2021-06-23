@@ -11,7 +11,7 @@ class ProductsMain extends Component
 
     use WithPagination;
 
-    public $search;
+    public $search, $category;
     public $pagination = 1;
     public $orderBy = 'DESC';
     public $sortBy = 'name';
@@ -28,40 +28,57 @@ class ProductsMain extends Component
         'orderBy' => ['except' => 'DESC'],
         'search' => ['except' => ''],
         'sortBy' => ['except' => 'name'],
+        'category' => ['except' => ''],
     ];
 
 
     public function render()
     {
 
-        if($this->sortBy == 'percent'){
-            $this->sortBy = 'percent';
-            $this->orderBy = 'ASC';
+        if($this->category){
+
             $products = Product::with('discount')->withFilters(
                 $this->selected['colors'],
                 $this->selected['sizes'],
                 $this->selected['gender']
                 
             )
+            ->whereHas('category',function ($query){
+                return $query->where('category',$this->category); 
+            });
+
+            $this->sortBy == 'percent' 
+            && $products = $products->WithOrds();
+            $this->sortBy != 'percent'  && $products = $products->orderBy($this->sortBy, $this->orderBy);
+
+            $products = $products
             ->groupBy('name')
             ->where('qty','>', 0)
             ->where('status', 1)
-            ->WithOrds()
             ->paginate($this->pagination);
+
         }
-        else{
+        elseif($this->search){
+
+        }
+        else{          
             $products = Product::with('discount')->withFilters(
                 $this->selected['colors'],
                 $this->selected['sizes'],
-                $this->selected['gender']
-                
-            )
+                $this->selected['gender'] 
+            );
+
+            $this->sortBy == 'percent' 
+            && $products = $products->WithOrds();
+            $this->sortBy != 'percent'  && $products = $products->orderBy($this->sortBy, $this->orderBy);
+
+            $products = $products
             ->groupBy('name')
             ->where('qty','>', 0)
             ->where('status', 1)
-            ->orderBy($this->sortBy, $this->orderBy)
             ->paginate($this->pagination);
         }
+     
         return view('livewire.products.products-main',compact('products'));
     }
 

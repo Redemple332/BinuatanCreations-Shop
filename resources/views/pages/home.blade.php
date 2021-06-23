@@ -58,7 +58,7 @@
 				@forelse ( $categories as $category )
 					<!-- banner -->
 					<div class="col-md-4 col-sm-6">
-						<a class="banner banner-1" href="#">
+						<a class="banner banner-1" href="{{route('products.category',['category' => $category->category])}}">
 							{{-- <img src="{{ $category->image_path }}" alt=""> --}}
 							<img  src="{{asset('storage/category_images/'.$category->image )}}" alt="">
 							<div class="banner-caption text-center">

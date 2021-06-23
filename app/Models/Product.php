@@ -95,6 +95,9 @@ class Product extends Model
     }
     
 
+  
+
+
     public function scopeWithOrds($query){
         return  $query->whereHas('discount', function ($query){
             $query->orderBy('percent','DESC');

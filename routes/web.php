@@ -44,7 +44,7 @@ use App\Http\Controllers\PagesController;
 //Customers
 Route::get('/',[PagesController::class,'home'])->name('home');
 Route::get('/products',[PagesController::class,'products'])->name('products');
-
+Route::get('products/cart',[PagesController::class,'cart'])->name('cart');
 
 
 

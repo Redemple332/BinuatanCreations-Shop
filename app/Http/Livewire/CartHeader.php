@@ -3,14 +3,26 @@
 namespace App\Http\Livewire;
 
 use Livewire\Component;
+use Gloudemans\Shoppingcart\Facades\Cart;
 
 class CartHeader extends Component
 {
 
-    public $count = 1;
-    
+    protected $listeners = ['cart_updated' => 'render'];
+
+    public function mount()
+    {
+        
+        
+    }
     public function render()
     {
-        return view('livewire.cart-header');
+        $carts = Cart::content();   
+        return view('livewire.cart-header', compact('carts'));
+    }
+
+    public function removeCart($cart_Id)
+    {
+        Cart::remove($cart_Id);
     }
 }

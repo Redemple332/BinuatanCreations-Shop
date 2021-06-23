@@ -1,0 +1,717 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  text-decoration: none;
+}
+
+body {
+  position: relative;
+  font-family: "Hind", sans-serif;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  overflow: hidden;
+}
+.big-image {
+  animation: fade 1.9s ease;
+  z-index: -1;
+  height: 100vh;
+  width: 100vw;
+  position: relative;
+  background-size: cover;
+  background-position: 50% 90%;
+  background-image: url(/po.jpg);
+}
+.overlay {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  background: linear-gradient(to right, #cacfd5, #ffff);
+  opacity: 0.8;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.work-area {
+  position: absolute;
+  width: 60%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container {
+  animation: moveup 1s ease;
+  margin: 0 0 5em 0;
+  display: flex;
+  overflow: hidden;
+  flex: wrap;
+  top: 15%;
+  bottom: 15%;
+  position: absolute;
+  background-color: rgb(228, 228, 228);
+  border-radius: 1em;
+  height: 30em;
+  width: 100%;
+  box-shadow: 0px 6px 14px 3px rgba(0, 0, 0, 0.45);
+}
+
+.card {
+  position: relative;
+  background-color: rgb(252, 252, 252);
+  height: 30em;
+  width: 100%;
+  overflow: hidden;
+  border-radius: 1em 0 0 1em;
+}
+
+.card-header {
+  display: flex;
+  justify-content: center;
+  margin-top: 1.5em;
+  animation: moveup 1.9s ease;
+  font-size: 0.8em;
+}
+
+.card-form {
+  position: relative;
+  margin: 1em;
+  display: flex;
+  background-color: hsl(0, 0%, 100%);
+  align-items: center;
+  justify-content: center;
+}
+
+.card-body {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  margin-left: 10%;
+}
+
+.radio-btn {
+  margin-top: 1em;
+}
+
+.btn-red {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-transform: uppercase;
+  width: 78%;
+  margin-top: 3em;
+  gap: 1.5em;
+  margin-left: 2em;
+  font-size: 0.9em;
+}
+
+.btn-red button:first-of-type {
+  padding: 0.9em 1em;
+  margin: 0;
+  background-color: red;
+  font-weight: 600;
+  letter-spacing: 0.3em;
+  color: white;
+  border: none;
+  border-radius: 0.2em;
+
+  transform: translateY(300%);
+  animation: moveup 1.9s ease 0.2s forwards;
+}
+.btn-red button:last-of-type {
+  padding: 0.9em 1em;
+  margin: 0;
+  transform: translateY(300%);
+  animation: moveup 1.9s ease 0.4s forwards;
+  font-weight: 600;
+  letter-spacing: 0.3em;
+  color: red;
+  border: 0.1px solid red;
+  border-radius: 0.2em;
+}
+
+.enter input[type="text"] {
+  padding: 1em;
+  margin: 1.5em;
+  background-color: rgb(252, 252, 252);
+  border: none;
+  border-bottom: rgb(194 117 73) solid 0.2em;
+  width: 24em;
+  outline: none;
+  color: rgb(70, 70, 70);
+}
+
+.radio-btn label {
+  margin-left: 0.3em;
+}
+.radio-btn input {
+  margin-left: 1.8em;
+  display: inline-block;
+}
+
+.btn-red a:first-of-type:hover {
+  background-color: rgb(55, 48, 48);
+  transition: all 0.7s ease;
+}
+.btn-red a:last-of-type:hover {
+  color: rgb(55, 48, 48);
+  border-color: rgb(55, 48, 48);
+  transition: all 0.7s ease;
+}
+
+@keyframes moveup {
+  from {
+    opacity: 0;
+    transform: translateY(200%);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0%);
+  }
+}
+
+@keyframes fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* media querys */
+
+/*  */
+
+@media (max-width: 1259px) {
+  .card {
+    position: relative;
+    background-color: rgb(252, 252, 252);
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+    border-radius: 1em 0 0 1em;
+  }
+  .container {
+    animation: moveup 1s ease;
+    margin: 0 0 5em 0;
+    display: flex;
+    overflow: hidden;
+    flex: wrap;
+    top: 10%;
+    bottom: 10%;
+    position: relative;
+    background-color: rgb(228, 228, 228);
+    border-radius: 1em;
+    height: 40em;
+    width: 100%;
+    box-shadow: 0px 6px 14px 3px rgba(0, 0, 0, 0.45);
+  }
+
+  .card-body {
+    position: absolute;
+    flex-wrap: wrap;
+    height: 100%;
+    width: 100%;
+  }
+
+  .enter input[type="text"] {
+    padding: 1em;
+    margin: 0.8em;
+    background-color: rgb(252, 252, 252);
+    border: none;
+    border-bottom: rgb(194 117 73) solid 0.2em;
+    width: 43em;
+    outline: none;
+    color: rgb(70, 70, 70);
+    font-size: 0.9em;
+  }
+
+  .btn-red {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-transform: uppercase;
+    width: 78%;
+    margin-top: 3em;
+    gap: 1.5em;
+    margin-left: 11em;
+  }
+}
+
+@media (max-width: 1165px) {
+  .card {
+    position: relative;
+    background-color: rgb(252, 252, 252);
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+    border-radius: 1em 0 0 1em;
+  }
+  .container {
+    animation: moveup 1s ease;
+    margin: 0 0 5em 0;
+    display: flex;
+    overflow: hidden;
+    flex: wrap;
+    top: 10%;
+    bottom: 10%;
+    position: relative;
+    background-color: rgb(228, 228, 228);
+    border-radius: 1em;
+    height: 40em;
+    width: 100%;
+    box-shadow: 0px 6px 14px 3px rgba(0, 0, 0, 0.45);
+  }
+
+  .card-body {
+    position: absolute;
+    flex-wrap: wrap;
+    height: 100%;
+    width: 100%;
+  }
+
+  .enter input[type="text"] {
+    padding: 1em;
+    margin: 0.8em;
+    background-color: rgb(252, 252, 252);
+    border: none;
+    border-bottom: rgb(194 117 73) solid 0.2em;
+    width: 38em;
+    outline: none;
+    color: rgb(70, 70, 70);
+    font-size: 0.9em;
+  }
+
+  .btn-red {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-transform: uppercase;
+    width: 78%;
+    margin-top: 3em;
+    gap: 1.5em;
+    margin-left: 11em;
+  }
+}
+
+@media (max-width: 1024px) {
+  .card {
+    position: relative;
+    background-color: rgb(252, 252, 252);
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+    border-radius: 1em 0 0 1em;
+  }
+  .container {
+    animation: moveup 1s ease;
+    margin: 0 0 5em 0;
+    display: flex;
+    overflow: hidden;
+    flex: wrap;
+    top: 10%;
+    bottom: 10%;
+    position: relative;
+    background-color: rgb(228, 228, 228);
+    border-radius: 1em;
+    height: 40em;
+    width: 100%;
+    box-shadow: 0px 6px 14px 3px rgba(0, 0, 0, 0.45);
+  }
+
+  .card-body {
+    position: absolute;
+    flex-wrap: wrap;
+    height: 100%;
+    width: 100%;
+  }
+
+  .enter input[type="text"] {
+    padding: 1em;
+    margin: 0.8em;
+    background-color: rgb(252, 252, 252);
+    border: none;
+    border-bottom: rgb(194 117 73) solid 0.2em;
+    width: 34em;
+    outline: none;
+    color: rgb(70, 70, 70);
+    font-size: 0.9em;
+  }
+
+  .btn-red {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-transform: uppercase;
+    width: 78%;
+    margin-top: 3em;
+    gap: 1.5em;
+    margin-left: 11em;
+  }
+}
+
+@media (max-width: 917px) {
+  .card {
+    position: relative;
+    background-color: rgb(252, 252, 252);
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+    border-radius: 1em 0 0 1em;
+  }
+  .container {
+    animation: moveup 1s ease;
+    margin: 0 0 5em 0;
+    display: flex;
+    overflow: hidden;
+    flex: wrap;
+    top: 10%;
+    bottom: 10%;
+    position: relative;
+    background-color: rgb(228, 228, 228);
+    border-radius: 1em;
+    height: 40em;
+    width: 100%;
+    box-shadow: 0px 6px 14px 3px rgba(0, 0, 0, 0.45);
+  }
+
+  .card-body {
+    position: absolute;
+    flex-wrap: wrap;
+    height: 100%;
+    width: 100%;
+  }
+
+  .enter input[type="text"] {
+    padding: 1em;
+    margin: 0.8em;
+    background-color: rgb(252, 252, 252);
+    border: none;
+    border-bottom: rgb(194 117 73) solid 0.2em;
+    width: 31em;
+    outline: none;
+    color: rgb(70, 70, 70);
+    font-size: 0.9em;
+  }
+  .enter input {
+    padding: 1em;
+    margin: 0.8em;
+    background-color: rgb(252, 252, 252);
+    border: none;
+    border-bottom: rgb(194 117 73) solid 0.2em;
+    width: 31em;
+    outline: none;
+    color: rgb(70, 70, 70);
+    font-size: 0.9em;
+  }
+  .btn-red {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-transform: uppercase;
+    width: 78%;
+    margin-top: 3em;
+    gap: 1.5em;
+    margin-left: 9em;
+  }
+}
+
+@media (max-width: 850px) {
+  .card {
+    position: relative;
+    background-color: rgb(252, 252, 252);
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+    border-radius: 1em 0 0 1em;
+  }
+  .container {
+    animation: moveup 1s ease;
+    margin: 0 0 5em 0;
+    display: flex;
+    overflow: hidden;
+    flex: wrap;
+    top: 10%;
+    bottom: 10%;
+    position: relative;
+    background-color: rgb(228, 228, 228);
+    border-radius: 1em;
+    height: 40em;
+    width: 100%;
+    box-shadow: 0px 6px 14px 3px rgba(0, 0, 0, 0.45);
+  }
+
+  .card-body {
+    position: absolute;
+    flex-wrap: wrap;
+    height: 100%;
+    width: 100%;
+  }
+
+  .enter input[type="text"] {
+    padding: 1em;
+    margin: 0.8em;
+    background-color: rgb(252, 252, 252);
+    border: none;
+    border-bottom: rgb(194 117 73) solid 0.2em;
+    width: 29em;
+    outline: none;
+    color: rgb(70, 70, 70);
+    font-size: 0.9em;
+  }
+
+  .btn-red {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-transform: uppercase;
+    width: 78%;
+    margin-top: 3em;
+    gap: 1.5em;
+    margin-left: 7em;
+  }
+}
+
+@media (max-width: 770px) {
+  .card {
+    position: relative;
+    background-color: rgb(252, 252, 252);
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+    border-radius: 1em 0 0 1em;
+  }
+  .container {
+    animation: moveup 1s ease;
+    margin: 0 0 5em 0;
+    display: flex;
+    overflow: hidden;
+    flex: wrap;
+    top: 10%;
+    bottom: 10%;
+    position: relative;
+    background-color: rgb(228, 228, 228);
+    border-radius: 1em;
+    height: 40em;
+    width: 100%;
+    box-shadow: 0px 6px 14px 3px rgba(0, 0, 0, 0.45);
+  }
+
+  .card-body {
+    position: absolute;
+    flex-wrap: wrap;
+    height: 100%;
+    width: 100%;
+  }
+
+  .enter input[type="text"] {
+    padding: 1em;
+    margin: 0.8em;
+    background-color: rgb(252, 252, 252);
+    border: none;
+    border-bottom: rgb(194 117 73) solid 0.2em;
+    width: 26em;
+    outline: none;
+    color: rgb(70, 70, 70);
+    font-size: 0.9em;
+  }
+
+  .btn-red {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-transform: uppercase;
+    width: 78%;
+    margin-top: 3em;
+    gap: 1.5em;
+    margin-left: 5em;
+  }
+}
+
+@media (max-width: 714px) {
+  .card {
+    position: relative;
+    background-color: rgb(252, 252, 252);
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+    border-radius: 1em 0 0 1em;
+  }
+  .container {
+    animation: moveup 1s ease;
+    margin: 0 0 5em 0;
+    display: flex;
+    overflow: hidden;
+    flex: wrap;
+    top: 10%;
+    bottom: 10%;
+    position: relative;
+    background-color: rgb(228, 228, 228);
+    border-radius: 1em;
+    height: 40em;
+    width: 100%;
+    box-shadow: 0px 6px 14px 3px rgba(0, 0, 0, 0.45);
+  }
+
+  .card-body {
+    position: absolute;
+    flex-wrap: wrap;
+    height: 100%;
+    width: 100%;
+  }
+
+  .enter input[type="text"] {
+    padding: 1em;
+    margin: 0.8em;
+    background-color: rgb(252, 252, 252);
+    border: none;
+    border-bottom: rgb(194 117 73) solid 0.2em;
+    width: 24em;
+    outline: none;
+    color: rgb(70, 70, 70);
+    font-size: 0.9em;
+  }
+
+  .btn-red {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-transform: uppercase;
+    width: 78%;
+    margin-top: 3em;
+    gap: 1.5em;
+    margin-left: 5em;
+  }
+}
+
+@media (max-width: 641px) {
+  .enter input[type="text"] {
+    width: 20em;
+  }
+
+  .btn-red {
+    width: 78%;
+    margin-top: 3em;
+    gap: 1.5em;
+    margin-left: 3em;
+  }
+}
+@media (max-width: 549px) {
+  .enter input[type="text"] {
+    width: 18em;
+  }
+
+  .btn-red {
+    width: 78%;
+    margin-top: 3em;
+    gap: 1.5em;
+    margin-left: 2em;
+  }
+}
+@media (max-width: 505px) {
+  .work-area {
+    width: 100%;
+  }
+
+  .enter input[type="text"] {
+    width: 28em;
+    margin: 0.5em;
+  }
+
+  .btn-red {
+    font-size: 0.8em;
+    width: 78%;
+    margin-top: 3em;
+    gap: 1.5em;
+    margin-left: 2em;
+  }
+  .card {
+    margin-top: 1em;
+  }
+}
+
+@media (max-width: 425px) {
+  .work-area {
+    width: 100%;
+  }
+
+  .enter input[type="text"] {
+    width: 25em;
+    margin: 0.5em;
+  }
+
+  .btn-red {
+    font-size: 0.8em;
+    width: 78%;
+    margin-top: 3em;
+    gap: 1.5em;
+    margin-left: 2em;
+  }
+  .card {
+    margin-top: 1em;
+  }
+}
+
+@media (max-width: 375px) {
+  .work-area {
+    width: 100%;
+  }
+
+  .enter input[type="text"] {
+    width: 21em;
+    margin: 0.5em;
+  }
+
+  .btn-red {
+    font-size: 0.8em;
+    width: 78%;
+    margin-top: 3em;
+    gap: 1.5em;
+    margin-left: 2em;
+  }
+  .card {
+    margin-top: 1em;
+  }
+}
+
+@media (max-width: 320px) {
+  .work-area {
+    width: 100%;
+  }
+
+  .enter input[type="text"] {
+    width: 18em;
+    margin: 0.5em;
+  }
+
+  .btn-red {
+    font-size: 0.8em;
+    width: 78%;
+    margin-top: 3em;
+    gap: 1.5em;
+    margin-left: 2em;
+  }
+  .card {
+    margin-top: 1em;
+  }
+}

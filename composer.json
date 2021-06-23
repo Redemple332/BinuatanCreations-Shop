@@ -7,6 +7,7 @@
     "require": {
         "php": "^7.3|^8.0",
         "binary-cats/laravel-sku": "^0.4.0",
+        "bumbummen99/shoppingcart": "^4.0",
         "cviebrock/eloquent-sluggable": "^8.0",
         "fideloper/proxy": "^4.4",
         "fruitcake/laravel-cors": "^2.0",

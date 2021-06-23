@@ -17,14 +17,14 @@ class PagesController extends Controller
       
         
         $flashsale = Product::with('discount')
-        ->WithFlashSale($this->WH = 'discount')
+        ->WithFlashSale()
         ->where('qty','>', 0)
         ->where('status', 1)
         ->take(1)
         ->get();
 
         $sale_products = Product::with('discount')
-        ->WithSale($this->WH = 'discount')
+        ->WithSale()
         ->groupBy('name')
         ->where('qty','>', 0)
         ->where('status', 1)
@@ -44,9 +44,9 @@ class PagesController extends Controller
         return view('pages.products');
     }
 
-    public function about()
+    public function cart()
     {
-
+        return view('pages.cart');
     }
 
 }

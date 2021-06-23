@@ -1,6 +1,4 @@
-@extends('layouts.app')
-
-@section('content')
+{{-- 
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
@@ -69,5 +67,81 @@
             </div>
         </div>
     </div>
-</div>
-@endsection
+</div> --}}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link type="text/css"  rel="stylesheet" href="{{ asset('logincss/style.css') }}">
+        <link type="text/css"  rel="stylesheet" href="{{ asset('logincss/rgd.css') }}">
+        <link type="text/css"  rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <title>Binuatan Creation - Login</title>
+    </head>
+
+    <body>
+
+        <div class="work-area">
+
+            <div class="container">
+        
+                <div class="card">
+                    <div class="card-form">
+                        <div class="card-logo">
+                            <h1>Logo HERE</h1>
+                        </div>
+                        <form method="POST" action="{{ route('login') }}">
+                            @csrf
+                            <div class="input-un enter">
+                                <input class="focus-design @error('email') is-invalid @enderror"placeholder="E-mail / Username / phone" id="email" type="email" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
+                                <span class="ico"><i class=" fa fa-user " id=" user-icon " aria-hidden=" true "></i>
+                            </div>                           
+                            @error('email')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                            @enderror
+
+                            <div class="input-ps enter">
+                                <input  class="focus-design @error('password') is-invalid @enderror" class="check"  type="password" placeholder="Password" pattern="\S+.*" id="password"  name="password" required autocomplete="current-password">
+                                <span class="ico"><i class="fa fa-lock" id="lock-icon" aria-hidden="true"></i></span>
+                            </div>
+                            @error('password')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                            
+                            <div class="forgot-password">
+                                <a href="#">forget password</a>
+                            </div>
+
+                            <div class="red-btn">
+                                <a href="#asga"><input type="submit" value="shop now"></a>
+                            </div>
+                        </form> 
+                        <div class="label-social"> 
+                            <p>Or Continue with</p>
+                        </div>
+                        <div class="social">
+                            <a href="#fb" class="fbico"><span ><i class=" fa fa-facebook " id=" user-icon " aria-hidden=" true "></i></span></a>
+                            <a href="#google" class="googleico"><span ><i class=" fa fa-google " id=" user-icon " aria-hidden=" true "></i></span></a>
+                            <a href="#twitter" class="twitterico"><span ><i class=" fa fa-twitter " id=" user-icon " aria-hidden=" true "></i></span></a>
+                        </div>
+                        <div class="input-reg">
+                            <p>don't have an account? <a href="register.html">Register</a></p>
+                        </div>     
+                    </div>
+                </div>
+                <div class="card-pic">
+                    <img src="{{ asset('logincss/3.jpg') }}" alt="">
+                <div class="ad-text">
+                    <H1>Hot Sale</H1>
+                    <h2>50% off!</h2>
+                    <p>Sept 10 - Dec 5</p>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

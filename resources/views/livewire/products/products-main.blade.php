@@ -14,7 +14,7 @@
                     <option value="price">Default</option>
                     <option value="ship">Free shipping</option>
                     <option value="updated_at">Latest</option>
-                    <option value="sales">Top sale</option>
+                    <option value="percent">Top sale</option>
                     <option value="price">Prices</option>
                 </select>
                 <button wire:click="orderBy" class="main-btn icon-btn"><i class="{{ $orderBy == 'ASC' ? 'fa fa-arrow-up' : 'fa fa-arrow-down' }}"></i></button>

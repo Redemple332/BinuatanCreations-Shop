@@ -34,18 +34,34 @@ class ProductsMain extends Component
     public function render()
     {
 
-        $products = Product::with('discount')->withFilters(
-            $this->selected['colors'],
-            $this->selected['sizes'],
-            $this->selected['gender']
-            
-        )
-        ->groupBy('name')
-        ->where('qty','>', 0)
-        ->where('status', 1)
-        ->orderBy($this->sortBy, $this->orderBy)
-        ->paginate($this->pagination);
-        
+        if($this->sortBy == 'percent'){
+            $this->sortBy = 'percent';
+            $this->orderBy = 'ASC';
+            $products = Product::with('discount')->withFilters(
+                $this->selected['colors'],
+                $this->selected['sizes'],
+                $this->selected['gender']
+                
+            )
+            ->groupBy('name')
+            ->where('qty','>', 0)
+            ->where('status', 1)
+            ->WithOrds()
+            ->paginate($this->pagination);
+        }
+        else{
+            $products = Product::with('discount')->withFilters(
+                $this->selected['colors'],
+                $this->selected['sizes'],
+                $this->selected['gender']
+                
+            )
+            ->groupBy('name')
+            ->where('qty','>', 0)
+            ->where('status', 1)
+            ->orderBy($this->sortBy, $this->orderBy)
+            ->paginate($this->pagination);
+        }
         return view('livewire.products.products-main',compact('products'));
     }
 

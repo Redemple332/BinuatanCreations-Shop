@@ -1,0 +1,1011 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  position: relative;
+  font-family: "Hind", sans-serif;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  overflow: hidden;
+  background-image: linear-gradient(to right, #cacfd5, #ffff);
+}
+
+h1,
+h2 {
+  text-transform: uppercase;
+}
+
+.ico {
+  margin-left: -1em;
+}
+
+.red-btn input {
+  background-color: #fb312e;
+  color: white;
+  margin: 0.5em 0 1.5em 0;
+  font-weight: 600;
+  letter-spacing: 0.3em;
+  font-size: 0.9em;
+  padding: 0.9em;
+  cursor: pointer;
+  width: 11em;
+  border: none;
+  border-radius: 0.2em;
+  text-transform: uppercase;
+  animation: moveup 1.9s ease;
+}
+
+.red-btn input:hover {
+  background-color: rgb(55, 48, 48);
+  transition: all 0.7s ease;
+}
+
+.work-area {
+  position: relative;
+  width: 60%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container {
+  animation: moveup 1s ease;
+  margin: 0 0 5em 0;
+  display: flex;
+  overflow: hidden;
+  flex: wrap;
+  top: 15%;
+  bottom: 15%;
+  position: absolute;
+  background-color: rgb(228, 228, 228);
+  border-radius: 1em;
+  height: 30em;
+  width: 100%;
+  box-shadow: 0px 6px 14px 3px rgba(0, 0, 0, 0.45);
+}
+
+.card {
+  position: relative;
+  background-color: rgb(252, 252, 252);
+  height: 30em;
+  width: 60%;
+  overflow: hidden;
+  border-radius: 1em 0 0 1em;
+}
+.card-pic {
+  position: relative;
+  display: flex;
+  overflow: hidden;
+  justify-content: center;
+  align-items: center;
+  background-color: hsl(0, 0%, 100%);
+  height: 30em;
+  width: 40%;
+  border-radius: 0 1em 1em 0;
+}
+
+.card-pic img {
+  height: 100%;
+  width: 100%;
+  opacity: 0.3;
+  object-fit: cover;
+  filter: blur(0.2px);
+}
+
+.card-logo {
+  margin: 2em 0 2em 0;
+  color: rgb(55, 48, 48);
+  cursor: default;
+  user-select: none;
+}
+
+.card-form {
+  display: flex;
+  background-color: hsl(0, 0%, 100%);
+  align-items: center;
+  flex-direction: column;
+}
+
+.enter input {
+  padding: 0.4em;
+  background-color: hsl(0, 0%, 100%);
+  border: none;
+  border-bottom: rgb(194 117 73) solid 0.2em;
+  width: 25em;
+}
+
+.focus-design:focus {
+  outline: none;
+}
+
+.enter i {
+  color: rgb(175, 175, 175);
+}
+
+/* social media icons */
+
+.social {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 1em;
+  gap: 0.5em;
+}
+
+.fbico {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 2em;
+  width: 2em;
+  border-radius: 50%;
+  background-color: #7b0806;
+}
+.twitterico {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 2em;
+  width: 2em;
+  border-radius: 50%;
+  background-color: #7b0806;
+}
+.googleico {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 2em;
+  width: 2em;
+  border-radius: 50%;
+  background-color: #7b0806;
+}
+.twitterico i {
+  color: white;
+  margin-top: 0.1em;
+}
+.googleico i {
+  color: white;
+  margin-top: 0.1em;
+}
+
+.fbico i {
+  color: white;
+  margin-top: 0.3em;
+}
+
+.label-social {
+  font-size: 0.8em;
+  display: inline-block;
+  position: relative;
+  color: rgb(124, 124, 124);
+}
+
+.fbico:hover {
+  background-color: #3b5998;
+  transform: translateY(-10%);
+  transition: all 0.3s ease-out;
+}
+.googleico:hover {
+  background-color: #db4437;
+  transform: translateY(-10%);
+  transition: all 0.3s ease-out;
+}
+.twitterico:hover {
+  background-color: #1da1f2;
+  transform: translateY(-10%);
+  transition: all 0.3s ease-out;
+}
+
+/* social media end */
+
+.input-un {
+  display: block;
+  margin-top: 1.8em;
+  margin-bottom: 1em;
+}
+.input-ps {
+  display: block;
+  margin-top: 3em;
+  margin-bottom: 0.1em;
+}
+
+input:invalid {
+  background-color: red;
+}
+
+.forgot-password {
+  margin: 0.5em 0 1em 15.5em;
+}
+.forgot-password a {
+  text-decoration: none;
+  font-size: 0.8em;
+  color: #fb312e;
+}
+
+.forgot-password a:hover {
+  color: rgb(114, 114, 114);
+}
+
+.ad-text {
+  cursor: default;
+  animation: moveup 1.9s ease;
+  position: absolute;
+  font-size: 2em;
+  color: #fb312e;
+  margin-left: 1.5em;
+  user-select: none;
+}
+
+.ad-text p {
+  margin-top: 0.2em;
+  font-size: 0.7em;
+  font-weight: 700;
+}
+
+.input-reg {
+  color: rgb(92, 92, 92);
+  margin: 0.5em 0 2em 0;
+  font-size: 0.8em;
+  cursor: default;
+  user-select: none;
+}
+
+.input-reg a {
+  cursor: pointer;
+  color: #fb312e;
+}
+.input-reg a:hover {
+  cursor: pointer;
+  color: #2b2727;
+}
+
+.modal {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  z-index: 3;
+  opacity: 0;
+  transform: scale(0);
+  height: 100vh;
+  width: 100vw;
+}
+
+:target {
+  opacity: 1;
+  transform-origin: top right;
+  transition: all 0.8s ease;
+  transform: scale(1);
+}
+
+@keyframes moveup {
+  from {
+    opacity: 0;
+    transform: translateY(200%);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0%);
+  }
+}
+
+/* modal style */
+
+.modal-bg {
+  background-color: black;
+  opacity: 0.7;
+  height: 100vh;
+  width: 100vw;
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.modal-container {
+  z-index: 2;
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100vw;
+}
+
+.modal-card {
+  position: fixed;
+  background-color: white;
+  opacity: 1;
+  height: 80%;
+  width: 25%;
+  border-radius: 1em;
+  box-shadow: 0px 6px 14px 3px rgba(0, 0, 0, 0.45);
+}
+
+.modal-x {
+  position: absolute;
+  background-color: rgb(242, 13, 13);
+  cursor: pointer;
+  color: white;
+  height: 2em;
+  width: 2em;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  right: -1em;
+  top: -1em;
+  box-shadow: 0px 3px 5px 1px rgba(0, 0, 0, 0.45);
+}
+
+.modal-x:target {
+  transform: scale(0);
+  transform-origin: top right;
+  transition: all 0.8s ease;
+}
+
+.modal-x::after {
+  content: "X";
+}
+
+.modal-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5em;
+  margin-top: 1.5em;
+}
+
+.modal-body {
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.modal-form input[type="text"] {
+  padding: 0.4em;
+  background-color: hsl(0, 0%, 100%);
+  border: none;
+  border-bottom: rgb(194 117 73) solid 0.2em;
+  width: 20em;
+}
+
+.modal-form input[type="button"] {
+  background-color: #fb312e;
+  color: white;
+  margin: 0.5em 0 1em 0;
+  font-weight: 600;
+  letter-spacing: 0.3em;
+  font-size: 0.9em;
+  padding: 0.9em;
+  cursor: pointer;
+  width: 9em;
+  border: none;
+  border-radius: 0.2em;
+  text-transform: uppercase;
+}
+
+/* media queries */
+
+/* mobile 375 x 608 */
+
+@media (max-width: 320px) and (max-height: 602px) {
+  .input-un {
+    display: block;
+    margin-top: 1.5em;
+    margin-bottom: 0em;
+  }
+
+  .work-area {
+    width: 90%;
+  }
+  .container {
+    top: 10%;
+    height: 30em;
+  }
+  .card,
+  .card-pic {
+    height: 40em;
+  }
+  .card {
+    width: 100%;
+  }
+  .card-pic {
+    display: none;
+  }
+  .card-logo {
+    font-size: 1em;
+  }
+  .ad-text {
+    font-size: 2em;
+    margin-left: 3em;
+    margin-right: 2em;
+    margin-bottom: 5em;
+  }
+
+  .enter input {
+    width: 15em;
+  }
+
+  .input-ps {
+    margin-top: 0.3em;
+    margin-bottom: 0.1em;
+  }
+  .forgot-password a {
+    margin: 0.5em 0 20em -5em;
+    font-size: 0.8em;
+  }
+
+  .red-btn input {
+    margin: 0.5em 0 1em 0;
+    font-size: 0.9em;
+    padding: 1em;
+    width: 14em;
+  }
+  .modal-card {
+    height: 0%;
+    width: 100em;
+  }
+
+  .modal-form {
+    overflow: hidden;
+    gap: 0;
+  }
+  .modal-form input[type="text"] {
+    width: 12em;
+    font-size: 0.8em;
+  }
+  .modal-form input[type="button"] {
+    width: 9em;
+    font-size: 0.7em;
+    margin-bottom: 5em;
+  }
+}
+
+/* mobile 375 x 608 */
+@media (max-width: 378px) {
+  .input-un {
+    display: block;
+    margin-top: 1.5em;
+    margin-bottom: 0em;
+  }
+
+  .work-area {
+    width: 90%;
+  }
+  .container {
+    top: 10%;
+    height: 30em;
+  }
+  .card,
+  .card-pic {
+    height: 40em;
+  }
+  .card {
+    width: 100%;
+  }
+  .card-pic {
+    display: none;
+  }
+  .card-logo {
+    font-size: 1em;
+  }
+  .ad-text {
+    font-size: 2em;
+    margin-left: 3em;
+    margin-right: 2em;
+    margin-bottom: 5em;
+  }
+
+  .enter input {
+    width: 15em;
+  }
+
+  .input-ps {
+    margin-top: 0.3em;
+    margin-bottom: 0.1em;
+  }
+  .forgot-password a {
+    margin: 0.5em 0 20em -5em;
+    font-size: 0.8em;
+  }
+
+  .red-btn input {
+    margin: 0.5em 0 1em 0;
+    font-size: 0.9em;
+    padding: 1em;
+    width: 14em;
+  }
+  .modal-card {
+    height: 0%;
+    width: 100em;
+  }
+
+  .modal-form {
+    overflow: hidden;
+    gap: 0;
+  }
+  .modal-form input[type="text"] {
+    width: 12em;
+    font-size: 0.8em;
+  }
+  .modal-form input[type="button"] {
+    width: 9em;
+    font-size: 0.7em;
+    margin-bottom: 5em;
+  }
+}
+
+/* mobile 375 x 608 */
+
+@media (max-width: 375px) and (max-height: 568px) {
+  .input-un {
+    display: block;
+    margin-top: 1.5em;
+    margin-bottom: 0em;
+  }
+
+  .work-area {
+    width: 90%;
+  }
+  .container {
+    top: 10%;
+    height: 30em;
+  }
+  .card,
+  .card-pic {
+    height: 40em;
+  }
+  .card {
+    width: 100%;
+  }
+  .card-pic {
+    display: none;
+  }
+  .card-logo {
+    font-size: 1em;
+  }
+  .ad-text {
+    font-size: 2em;
+    margin-left: 3em;
+    margin-right: 2em;
+    margin-bottom: 5em;
+  }
+
+  .enter input {
+    width: 15em;
+  }
+
+  .input-ps {
+    margin-top: 0.3em;
+    margin-bottom: 0.1em;
+  }
+  .forgot-password a {
+    margin: 0.5em 0 20em -5em;
+    font-size: 0.8em;
+  }
+
+  .red-btn input {
+    margin: 0.5em 0 1em 0;
+    font-size: 0.9em;
+    padding: 1em;
+    width: 14em;
+  }
+  .modal-card {
+    height: 0%;
+    width: 100em;
+  }
+
+  .modal-form {
+    overflow: hidden;
+    gap: 0;
+  }
+  .modal-form input[type="text"] {
+    width: 12em;
+    font-size: 0.8em;
+  }
+  .modal-form input[type="button"] {
+    width: 9em;
+    font-size: 0.7em;
+    margin-bottom: 5em;
+  }
+}
+
+/* mobile L 425 x 768 */
+
+@media (max-width: 425px) and (max-height: 608px) {
+  .input-un {
+    display: block;
+    margin-top: 1.5em;
+    margin-bottom: 0em;
+  }
+  .work-area {
+    width: 90%;
+  }
+  .container {
+    top: 10%;
+    height: 30em;
+  }
+  .card,
+  .card-pic {
+    height: 40em;
+  }
+  .card {
+    width: 100%;
+  }
+  .card-pic {
+    display: none;
+  }
+  .card-logo {
+    font-size: 1em;
+  }
+  .ad-text {
+    font-size: 2em;
+    margin-left: 3em;
+    margin-right: 2em;
+    margin-bottom: 5em;
+  }
+
+  .input-ps {
+    margin-top: 4em;
+    margin-bottom: 0.1em;
+  }
+  .forgot-password {
+    margin: 0.5em 0 2em 15em;
+  }
+
+  .red-btn input {
+    margin: 0.5em 0 1em 0;
+    font-size: 0.9em;
+    padding: 1em;
+    width: 14em;
+  }
+  .modal-card {
+    height: 80%;
+    width: 50%;
+  }
+  .modal-form {
+    gap: 1em;
+  }
+}
+
+/* mobile L 768 x 768  --> tablet */
+
+@media (max-width: 768px) and (max-height: 768px) {
+  .input-un {
+    display: block;
+    margin-top: 1.5em;
+    margin-bottom: 0em;
+  }
+
+  .work-area {
+    width: 90%;
+  }
+  .container {
+    top: 20%;
+    height: 30em;
+  }
+  .card,
+  .card-pic {
+    height: 40em;
+  }
+  .card {
+    width: 100%;
+  }
+  .card-pic {
+    display: none;
+  }
+  .card-logo {
+    font-size: 1em;
+  }
+  .ad-text {
+    font-size: 2em;
+    margin-left: 3em;
+    margin-right: 2em;
+    margin-bottom: 5em;
+  }
+
+  .input-ps {
+    margin-top: 4em;
+    margin-bottom: 0.1em;
+  }
+  .forgot-password {
+    margin: 0.5em 0 2em 15em;
+  }
+
+  .red-btn input {
+    margin: 0.5em 0 1em 0;
+    font-size: 0.9em;
+    padding: 1em;
+    width: 14em;
+  }
+  .modal-card {
+    height: 80%;
+    width: 50%;
+  }
+  .modal-form {
+    gap: 1em;
+  }
+}
+
+/* Tablet 768 x 602 */
+
+@media (max-width: 768px) and (max-height: 602px) {
+  .input-un {
+    display: block;
+    margin-top: 1.5em;
+    margin-bottom: 0em;
+  }
+  .work-area {
+    width: 90%;
+  }
+  .container {
+    top: 10%;
+    height: 30em;
+  }
+  .card,
+  .card-pic {
+    height: 40em;
+  }
+  .card-logo {
+    font-size: 1em;
+  }
+  .ad-text {
+    font-size: 2em;
+    margin-left: 3em;
+    margin-right: 2em;
+    margin-bottom: 5em;
+  }
+
+  .input-ps {
+    margin-top: 4em;
+    margin-bottom: 0.1em;
+  }
+  .forgot-password {
+    margin: 0.5em 0 2em 15em;
+  }
+
+  .red-btn input {
+    margin: 0.5em 0 1em 0;
+    font-size: 0.9em;
+    padding: 1em;
+    width: 14em;
+  }
+  .modal-card {
+    height: 80%;
+    width: 50%;
+  }
+  .modal-form {
+    gap: 1em;
+  }
+}
+
+/* Tablet 770 x 768 */
+
+@media (max-width: 1019px) and (min-width: 769px) {
+  .work-area {
+    width: 60%;
+  }
+  .container {
+    top: 10%;
+    height: 30em;
+  }
+  .card,
+  .card-pic {
+    height: 40em;
+  }
+  .card-logo {
+    font-size: 1em;
+  }
+  .ad-text {
+    font-size: 2em;
+    margin-left: 3em;
+    margin-right: 2em;
+    margin-bottom: 5em;
+  }
+
+  .enter input {
+    width: 18em;
+  }
+
+  .input-ps {
+    margin-top: 4em;
+    margin-bottom: 0.1em;
+  }
+  .forgot-password {
+    margin: 0.5em 0 2em 9em;
+  }
+
+  .red-btn input {
+    margin: 0.5em 0 1em 0;
+    font-size: 0.9em;
+    padding: 1em;
+    width: 14em;
+  }
+  .modal-card {
+    height: 80%;
+    width: 50%;
+  }
+  .modal-form {
+    gap: 1em;
+  }
+}
+
+/* Tablet 770 x 768 */
+
+@media (max-width: 1019px) and (min-width: 769px) {
+  .input-un {
+    display: block;
+    margin-top: 1.5em;
+    margin-bottom: 0em;
+  }
+  .work-area {
+    width: 80%;
+  }
+  .container {
+    top: 10%;
+    height: 30em;
+  }
+  .card,
+  .card-pic {
+    height: 40em;
+  }
+  .card-logo {
+    font-size: 1em;
+  }
+  .ad-text {
+    font-size: 2em;
+    margin-left: 3em;
+    margin-right: 2em;
+    margin-bottom: 5em;
+  }
+
+  .enter input {
+    width: 18em;
+  }
+
+  .input-ps {
+    margin-top: 4em;
+    margin-bottom: 0.1em;
+  }
+  .forgot-password {
+    margin: 0.5em 0 2em 9em;
+  }
+
+  .red-btn input {
+    margin: 0.5em 0 1em 0;
+    font-size: 0.9em;
+    padding: 1em;
+    width: 14em;
+  }
+  .modal-card {
+    height: 80%;
+    width: 50%;
+  }
+  .modal-form {
+    gap: 1em;
+  }
+}
+/* 
+ latop 1024 x 802 
+
+@media (min-width: 1024px) and (min-height: 802px) {
+  .work-area {
+    width: 70%;
+  }
+  .container {
+    top: 10%;
+    height: 40em;
+  }
+  .card,
+  .card-pic {
+    height: 40em;
+  }
+  .card-logo {
+    font-size: 1.5em;
+  }
+  .ad-text {
+    font-size: 2.8em;
+    margin-top: 3.8em;
+    margin-left: 3em;
+    margin-right: 2em;
+  }
+
+  .input-ps {
+    margin-top: 5em;
+    margin-bottom: 0.1em;
+  }
+  .forgot-password {
+    margin: 0.5em 0 3em 15em;
+    font-size: 1.1em;
+  }
+  .input-reg {
+    margin: 3em 0 2em 0;
+    font-size: 1em;
+  }
+  .enter input {
+    font-size: 1em;
+    padding: 0.4em;
+    width: 23em;
+  }
+
+  .red-btn input {
+    margin: 0.5em 0 1em 0;
+    font-size: 0.9em;
+    padding: 1.5em;
+    width: 14em;
+  }
+  .modal-card {
+    height: 80%;
+    width: 50%;
+  }
+  .modal-form {
+    gap: 1.8em;
+  }
+  .modal-form input[type="text"] {
+    width: 25em;
+    font-size: 1em;
+  }
+}
+
+ 1440 x 860 
+
+@media (min-width: 1440px) and (min-height: 860px) {
+  .work-area {
+    width: 60%;
+  }
+  .container {
+    height: 40em;
+  }
+  .card,
+  .card-pic {
+    height: 40em;
+  }
+  .card-logo {
+    font-size: 1.5em;
+  }
+  .ad-text {
+    font-size: 3em;
+    margin-top: 3.8em;
+    margin-left: 3em;
+    margin-right: 2em;
+  }
+  .enter input {
+    font-size: 1em;
+    padding: 0.4em;
+    width: 25em;
+  }
+
+  .input-ps {
+    margin-top: 5em;
+    margin-bottom: 0.1em;
+  }
+  .forgot-password {
+    font-size: 1.2em;
+    margin: 0.5em 0 3em 15em;
+  }
+
+  .input-reg {
+    margin: 3em 0 2em 0;
+    font-size: 1em;
+  }
+  .red-btn input {
+    margin: 0.5em 0 1em 0;
+    font-size: 0.9em;
+    padding: 1.5em;
+    width: 14em;
+  }
+  .modal-card {
+    height: 80%;
+    width: 50%;
+  }
+  .modal-form {
+    gap: 1em;
+  }
+} */

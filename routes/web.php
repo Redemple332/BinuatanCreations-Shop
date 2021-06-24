@@ -59,6 +59,8 @@ Route::get('products?',[PagesController::class,'products'])->name('products.cate
 
 
 
+
+
 //Admin
 Route::get('admin/login', AdminLogin::class)->middleware('guest:admin')->name('admin.login');
 Route::get('admin/dashboard', Dashboard::class)->middleware('auth:admin')->name('admin.dashboard');

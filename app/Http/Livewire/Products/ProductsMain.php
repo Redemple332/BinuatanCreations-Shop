@@ -22,7 +22,7 @@ class ProductsMain extends Component
         'gender' => []
     ];
 
-    protected $listeners = ['updatedFilter' => 'setSelected']; 
+    protected $listeners = ['updatedFilter' => 'setSelected', 'search' => 'searchProduct', 'category' => 'categoryProduct']; 
 
     protected $queryString = [
         'orderBy' => ['except' => 'DESC'],
@@ -43,6 +43,7 @@ class ProductsMain extends Component
                 $this->selected['gender']
                 
             )
+            ->with('images')
             ->whereHas('category',function ($query){
                 return $query->where('category',$this->category); 
             });
@@ -58,15 +59,39 @@ class ProductsMain extends Component
             ->paginate($this->pagination);
 
         }
-        elseif($this->search){
 
+        elseif($this->search){
+            $products = Product::with('discount')->withFilters(
+                $this->selected['colors'],
+                $this->selected['sizes'],
+                $this->selected['gender']
+                
+            )
+            ->with('images')
+            ->where('qty','>', 0)
+            ->where('status', 1)
+            ->where('name','like', '%'.$this->search.'%')
+            ->Orwhere('gender','like', '%'.$this->search.'%')
+            ->Orwhere('description','like', '%'.$this->search.'%')
+            ->withSearch($this->search);
+            
+
+            $this->sortBy == 'percent' 
+            && $products = $products->WithOrds();
+            $this->sortBy != 'percent'  && $products = $products->orderBy($this->sortBy, $this->orderBy);
+    
+            $products = $products
+            ->groupBy('name')
+            ->paginate($this->pagination);
         }
+        
         else{          
             $products = Product::with('discount')->withFilters(
                 $this->selected['colors'],
                 $this->selected['sizes'],
                 $this->selected['gender'] 
-            );
+            )
+            ->with('images');
 
             $this->sortBy == 'percent' 
             && $products = $products->WithOrds();
@@ -106,6 +131,18 @@ class ProductsMain extends Component
     public function updatedPagination()
     {
         $this->resetPage(); 
+    }
+
+    public function searchProduct($search)
+    {
+        $this->category = null; 
+        $this->search = $search; 
+    }
+
+    public function categoryProduct($category)
+    {
+        $this->search = null; 
+        $this->category = $category; 
     }
 }
 

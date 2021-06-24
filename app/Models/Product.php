@@ -120,6 +120,19 @@ class Product extends Model
     }
 
 
+    public function scopeWithSearch($query, $search)
+    {
+        return $query->orwhereHas('size',function ($query) use ($search){
+             $query->Where('name','like', '%'.$search.'%'); 
+        })
+        ->orwhereHas('category',function ($query) use ($search){
+            $query->Where('category','like', '%'.$search.'%'); 
+        })
+        ->orwhereHas('color',function ($query) use ($search){
+            $query->Where('colors.name','like', '%'.$search.'%'); 
+        });
+    }
+
     public function scopeWithFilters($query, $colors, $sizes, $gender)
     {
 

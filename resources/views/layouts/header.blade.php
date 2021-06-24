@@ -37,7 +37,6 @@
 		<!-- header -->
 		<div id="header">
 			<div class="container">
-				<div class="pull-left">
 				@livewire('cart-header')
 				@livewire('products.search')
 			</div>

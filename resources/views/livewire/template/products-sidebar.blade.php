@@ -40,24 +40,7 @@
     </div>
     <!-- aside widget -->
 
-    {{-- <!-- aside widget -->
-    <div class="aside">
-        <h3 class="aside-title">Filter By Color:</h3>
-
-        
-        <ul class="color-option">
-            <li class="{{ $filter_color == null? 'active size-option':''  }}">
-                <a  wire:click="Filter('{{null}}')" style="background-color:#000000;"></a>
-            </li>
-            @foreach ($colorsFilter as $colorsFil)
-                <li class="{{ $filter_color == $colorsFil->code? 'active':''  }}">
-                    <a  wire:click="Filter('{{ $colorsFil->code}}')" style="background-color:{{ $colorsFil->code }};">
-                    </a>
-                </li>
-            @endforeach
-        </ul>
-    </div>
-    <!-- /aside widget --> --}}
+  
 
     <!-- aside widget -->
     <div class="aside">

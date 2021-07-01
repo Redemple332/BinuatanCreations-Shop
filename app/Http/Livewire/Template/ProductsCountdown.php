@@ -14,8 +14,6 @@ class ProductsCountdown extends Component
 
     public function render()
     {
-          
-
         return view('livewire.template.products-countdown');
     }
 

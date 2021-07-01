@@ -15,7 +15,7 @@
                 <select wire:model="category" class="input search-categories">
                     <option value="0">All Categories</option>
                     @forelse ($categories as $category )
-                        <option value="{{ $category->category }}">{{ $category->category }}</option> 
+                        <option value="{{ $category->categoryW }}">{{ $category->category }}</option> 
                     @empty
                         
                     @endforelse

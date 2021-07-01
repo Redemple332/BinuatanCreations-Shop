@@ -37,7 +37,7 @@
 		<!-- header -->
 		<div id="header">
 			<div class="container">
-				@livewire('cart-header')
+				@livewire('cart.cart-header')
 				@livewire('products.search')
 			</div>
 			<!-- header -->

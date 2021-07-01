@@ -72,7 +72,7 @@
                                     <label class="custom-control-label" for="customSwitch{{ $product->id }}"></label>
                                 </span>
                                 <button  class="btn btn-info btn-sm"  data-hover="tooltip" title="View"><span class="fa fa-eye"></span></button>
-                                <a  title="Edit" class="btn btn-primary btn-sm" href="{{ route('admin.product.edit', ['product' => $product->id]) }}"><span class="fa fa-edit fw-fa"></span></a>
+                                <a  title="Edit" class="btn btn-primary btn-sm" href="{{ route('admin.product.edit', ['product' => $product->slug]) }}"><span class="fa fa-edit fw-fa"></span></a>
                                 <button  class="btn btn-danger btn-sm" wire:click.prevent="delete(({{ $product->id }}))"  data-hover="tooltip" title="Delete"><span class="fa fa-trash"></span></button>
                             </td> 
                         </tr> 

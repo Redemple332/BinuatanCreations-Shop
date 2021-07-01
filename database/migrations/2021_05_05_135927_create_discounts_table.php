@@ -18,8 +18,7 @@ class CreateDiscountsTable extends Migration
             $table->foreignId('product_id')->unique()->constrained()->onDelete('cascade'); // <-- Relation to the product.
             $table->tinyInteger('percent')->default(0);
             $table->boolean('new')->default(0);
-            $table->boolean('date')->default(0);
-            $table->time('time')->default(0);
+            $table->string('date')->default(0);
             $table->boolean('status')->default(0);
             $table->timestamps();
         });

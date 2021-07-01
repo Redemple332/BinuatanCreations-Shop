@@ -9,21 +9,24 @@
                     </div>
                     <strong class="text-uppercase">My Account <i class="fa fa-caret-down"></i></strong>
                 </div>
-                <a href="{{ route('login') }}" class="text-uppercase">Login</a> / <a href="#" class="text-uppercase">Join</a>
+                @guest
+                    <a href="{{ route('login') }}" class="text-uppercase">Login</a> / <a href="{{ route('register') }}" class="text-uppercase">Join</a>
+                @else
+                <a href="" class="text-uppercase">{{ auth()->user()->username }}</a>
+                @endguest
+
                 <ul class="custom-menu">
-                    <li><a href="#"><i class="fa fa-user-o"></i> My Account</a></li>
-                    <li><a href="#"><i class="fa fa-heart-o"></i> My Wishlist</a></li>
+                    @auth
+                    <li><a href="#"><i class="fa fa-user-o"></i> {{ auth()->user()->username }} </a></li>
+                    @endauth
+                    <li><a href="{{ route('wishlist') }}"><i class="fa fa-heart-o"></i> My Wishlist</a></li>
                     <li><a href="#"><i class="fa fa-exchange"></i> Compare</a></li>
-                    <li><a href="#"><i class="fa fa-check"></i> Checkout</a></li>
-                    <li><a href="#"><i class="fa fa-unlock-alt"></i> Login</a></li>
-                    <li><a href="#"><i class="fa fa-user-plus"></i> Create An Account</a></li>
-                    <li>
-                        <form id="logout-form" action="{{ url('/logout') }}" method="POST" >
-                            @csrf
-                            <button type="submit"><i class="fa fa-unlock-alt"></i> Log-out </button>
-                            <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                        </form>
-                    </li>
+                    <li><a href="{{ route('checkout') }}"><i class="fa fa-check"></i> Checkout</a></li>
+                    @auth
+                        <li>
+                            <a href="{{ url('/logout')}}"><i class="fa fa-unlock-alt"></i> Log-out </a>
+                        </li>
+                    @endauth
                 </ul>
             </li>
             <!-- /Account -->
@@ -62,7 +65,7 @@
                                     </div>
                                     <div class="product-body">
                                         <h3 class="product-price">&#8369;{{ $cart->price }}.00 <span class="qty">x{{ $cart->qty }}</span></h3>
-                                        <h2 class="product-name"><a href="#">{{ $cart->name }}</a></h2>
+                                        <h2 class="product-name"><a href="{{ route('products.single-item', ['product' => $cart->model->slug]) }}">{{ $cart->name }}</a></h2>
                                     </div>
                                     <a wire:click="removeCart('{{ $cart->rowId }}')" class="cancel-btn" ><i class="fa fa-trash"></i></a>
                                 </div>
@@ -72,7 +75,7 @@
                         </div>
                         <div class="shopping-cart-btns">
                             <a href="{{ route('cart') }}" class="main-btn">View Cart</a>
-                            <button class="primary-btn">Checkout <i class="fa fa-arrow-circle-right"></i></button>
+                            <a href="{{ route('checkout') }}" class="primary-btn">Checkout <i class="fa fa-arrow-circle-right"></i></a>
                         </div>
                     </div>
                 </div>

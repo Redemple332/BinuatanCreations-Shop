@@ -12,7 +12,7 @@ class ProductsMain extends Component
     use WithPagination;
 
     public $search, $category;
-    public $pagination = 1;
+    public $pagination = 10;
     public $orderBy = 'DESC';
     public $sortBy = 'name';
     
@@ -98,9 +98,9 @@ class ProductsMain extends Component
             $this->sortBy != 'percent'  && $products = $products->orderBy($this->sortBy, $this->orderBy);
 
             $products = $products
-            ->groupBy('name')
             ->where('qty','>', 0)
             ->where('status', 1)
+            ->groupBy('name')
             ->paginate($this->pagination);
         }
      

@@ -27,10 +27,5 @@
 		<!-- /container -->
 	</div>
 	<!-- /section -->
-	<script type="text/javascript">
-        window.addEventListener('urlChange', event =>{
-			window.history.pushState("object or string", "Title", event.detail.url);
-        })
-    </script>
 @endsection
 

@@ -33,7 +33,8 @@ class ProductsSidebar extends Component
                 [],
                 $this->selected['gender']
             );
-        }])->get();
+        }])
+        ->get();
 
         $genders = $genderService->getGender(
             [],

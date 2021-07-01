@@ -36,6 +36,11 @@ class Product extends Model
         'status'
     ];
 
+    public function getRouteKeyName()
+    {
+        return 'slug';
+    }
+    
     public function sluggable(): array
     {
         return [

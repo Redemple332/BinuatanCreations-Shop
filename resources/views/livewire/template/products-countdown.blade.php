@@ -13,7 +13,7 @@
                 <li><span>{{ $countdown->days}} D</span></li>
                 <li><span>{{ $countdown->hours}} H</span></li>
                 <li><span>{{ $countdown->minutes}} M</span></li>
-                <li><span>{{ $countdown->seconds}} S  <p>{{ $this->flashsale }} {{ now() }}</p></span></li>
+                <li><span>{{ $countdown->seconds}} S</span></li>
             </ul>   
 
         </div>

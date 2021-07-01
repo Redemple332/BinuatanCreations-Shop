@@ -43,13 +43,18 @@ use App\Http\Controllers\PagesController;
 */
 //Customers
 Route::get('/',[PagesController::class,'home'])->name('home');
-Route::get('/products',[PagesController::class,'products'])->name('products');
 Route::get('products/cart',[PagesController::class,'cart'])->name('cart');
+Route::get('products/cart/checkout',[PagesController::class,'checkout'])->middleware('auth')->name('checkout');
+
+
+Route::get('/products',[PagesController::class,'products'])->name('products');
 Route::get('products?',[PagesController::class,'products'])->name('products.category');
+Route::get('/products/{product}',[PagesController::class,'singleProduct'])->name('products.single-item');
 
+Route::get('/profile',[PagesController::class,'customerProfile'])->name('customer.profile');
+Route::get('/wishlist',[PagesController::class,'wishlist'])->name('wishlist');
 
-
-
+Route::get('/logout', '\App\Http\Controllers\Auth\LoginController@logout');//Log out User
 
 
 

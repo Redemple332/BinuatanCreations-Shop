@@ -71,7 +71,7 @@ class SingleItem extends Component
             ['size' => $product->size->code,
             'color' => $product->color->name,
             'image' => $image->image],
-        );
+        )->associate('App\Models\Product');
         $this->emit('cart_updated');
     }
 

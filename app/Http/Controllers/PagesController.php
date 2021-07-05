@@ -78,8 +78,8 @@ class PagesController extends Controller
 
     public function checkout()
     {
-        $carts = Cart::content();  
-        return view('pages.check-out', compact('carts'));
+        
+        return view('pages.check-out');
     }
 
     public function customerProfile()

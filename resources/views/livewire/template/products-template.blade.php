@@ -30,7 +30,7 @@
             <div class="product-body">
                 <h3 class="product-price"> &#8369;{{ $product->discount->percent != 0 ?number_format($product->discounted_price,2): $product->price }}
                     @if( $product->discount->percent)
-                        <del class="product-old-price">&#8369;{{  $product->price }}</del>
+                        <del class="product-old-price">&#8369;{{ number_format($product->price, 2)  }}</del>
                     @endif
                 </h3>                    
                 <div class="product-rating">

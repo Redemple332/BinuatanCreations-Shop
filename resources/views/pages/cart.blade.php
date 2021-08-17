@@ -17,9 +17,11 @@
 							<a href="{{route('products')}}" class="primary-btn">Add Order</a>
 						</div>
 
-						<div class="pull-right">
-							<a href="{{ route('checkout') }}" class="primary-btn">Place Order</a>
-						</div>
+						@if (Cart::instance('default')->count())
+							<div class="pull-right">
+								<a href="{{ route('checkout') }}" class="primary-btn">Place Order</a>
+							</div>
+						@endif
 					</div>
 
 				</div>

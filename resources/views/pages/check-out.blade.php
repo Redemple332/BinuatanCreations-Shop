@@ -6,7 +6,7 @@
 		<div class="container">
 			<!-- row -->
 			<div class="row">
-				<form id="checkout-form" class="clearfix">
+				<div id="checkout-form" class="clearfix">
 					@livewire('cart.billing-details')
 
 					<div class="col-md-12">
@@ -18,7 +18,7 @@
 						</div>
 				
 					</div>
-				</form>
+				</div>
 			</div>
 			<!-- /row -->
 		</div>

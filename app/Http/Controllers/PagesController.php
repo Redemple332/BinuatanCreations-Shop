@@ -78,8 +78,14 @@ class PagesController extends Controller
 
     public function checkout()
     {
+        if (Cart::instance('default')->count()) {
+            
+            return view('pages.check-out');
+        }
+        else{
+            return redirect('/products/cart');
+        }
         
-        return view('pages.check-out');
     }
 
     public function customerProfile()

@@ -89,16 +89,16 @@
                 <h4 class="title">Payments Methods</h4>
             </div>
             <div class="input-checkbox">
-                <input type="radio" name="payments" id="payments-1" checked>
-                <label for="payments-1">Direct Bank Transfer</label>
+                {{ $payments }}
+                <input type="radio" value="cod" wire:model="payments" name="payments" id="payments-1" checked>
+                <label for="payments-1">Cash On Delivery</label>
                 <div class="caption">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                        <p>
+                    <p>Order Now Pay on Delivery<p>
                 </div>
             </div>
             <div class="input-checkbox">
-                <input type="radio" name="payments" id="payments-2">
-                <label for="payments-2">Cheque Payment</label>
+                <input type="radio"  name="payments" id="payments-2">
+                <label for="payments-2">Credit Card Payment</label>
                 <div class="caption">
                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
                         <p>

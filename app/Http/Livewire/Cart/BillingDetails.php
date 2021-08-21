@@ -8,7 +8,7 @@ use App\Models\Address;
 class BillingDetails extends Component
 {
 
-    public $addresses, $default_address, $addressId;
+    public $addresses, $default_address, $addressId, $payments;
 
     public $updateId = null;
 
@@ -109,8 +109,7 @@ class BillingDetails extends Component
     //DELETE ADDRESS
     public function removeAddress($id)
     {
-        $address = Address::findOrFail($id);
-        $address->delete();
+        Address::find($id)->delete();
         $this->updatedAddressId();
         $this->mount();
     }

@@ -6,13 +6,15 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Cviebrock\EloquentSluggable\Sluggable;
 use BinaryCats\Sku\HasSku;
+use Illuminate\Database\Eloquent\SoftDeletes;
+
 class Product extends Model
 {
     
     use HasFactory; 
     use Sluggable;
     use HasSku;
-
+    use SoftDeletes;
     protected $table = 'products';
 
     const GENDER = [
@@ -35,6 +37,7 @@ class Product extends Model
         'size_id',
         'status'
     ];
+
 
     public function getRouteKeyName()
     {
@@ -100,10 +103,15 @@ class Product extends Model
     }
     
 
-  
+    public function scopeWithStocks($query)
+    {
+        return $query->where('qty','>', 0)
+        ->where('status', 1);
 
+    }
 
-    public function scopeWithOrds($query){
+    public function scopeWithOrds($query)
+    {
         return  $query->whereHas('discount', function ($query){
             $query->orderBy('percent','DESC');
             

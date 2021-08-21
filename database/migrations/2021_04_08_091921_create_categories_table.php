@@ -19,6 +19,7 @@ class CreateCategoriesTable extends Migration
             $table->string('image')->default('no image.jpg')->nullable();
             $table->boolean('status')->default(1);
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

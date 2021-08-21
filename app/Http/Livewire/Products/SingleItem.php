@@ -24,15 +24,14 @@ class SingleItem extends Component
         ->with('category')
         ->with('color')
         ->with('size')
-        ->where('qty','>', 0)
-        ->where('status', 1)
+        ->WithStocks()
         ->where('slug', $this->product)->first();
 
     
         $product_colors = Product::join('colors', 'products.color_id', '=', 'colors.id')
         ->select('slug','colors.id', 'colors.code')
         ->where('products.name',$single_product->name)
-        ->where('qty','>', 0)
+        ->WithStocks()
         ->where('size_id', $single_product->size_id)
         ->where('products.status', 1)
         ->groupBy('color_id')->get();

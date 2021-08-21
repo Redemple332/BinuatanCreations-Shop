@@ -24,6 +24,7 @@ class CreateShippingAddressesTable extends Migration
             $table->string('postal_code');
             $table->string('full_address');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

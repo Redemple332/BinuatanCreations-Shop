@@ -21,6 +21,7 @@ class CreateDiscountsTable extends Migration
             $table->string('date')->default(0);
             $table->boolean('status')->default(0);
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

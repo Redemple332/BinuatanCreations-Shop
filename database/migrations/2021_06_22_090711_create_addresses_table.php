@@ -26,6 +26,7 @@ class CreateAddressesTable extends Migration
             $table->string('postalcode');
             $table->mediumText('full_address');
             $table->timestamps();
+            $table->softDeletes();
             
         });
     }

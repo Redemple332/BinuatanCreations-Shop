@@ -24,6 +24,7 @@ class CreateOrdersTable extends Migration
             $table->mediumText('message')->default('Your order is on process.');
             $table->enum('status', ['pending', 'confirmed','shipped','delivered','cancelled', 'refunded'])->default('pending');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

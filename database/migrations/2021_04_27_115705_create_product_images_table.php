@@ -17,6 +17,7 @@ class CreateProductImagesTable extends Migration
             $table->id();
             $table->foreignId('product_id')->constrained()->onDelete('cascade'); // <-- Relation to the product.
             $table->string('image')->default('productdefault.jpg')->unique();
+            $table->softDeletes();
         });
     }
 

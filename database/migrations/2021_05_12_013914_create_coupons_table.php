@@ -22,6 +22,7 @@ class CreateCouponsTable extends Migration
             $table->decimal('cart_value');
             $table->date('expiry_date')->default(DB::raw('CURRENT_DATE'));
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

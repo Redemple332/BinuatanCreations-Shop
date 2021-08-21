@@ -29,6 +29,7 @@ class CreateProductsTable extends Migration
             $table->boolean('ship')->default(0);
             $table->boolean('status')->default(1);
             $table->timestamps();
+            $table->softDeletes();
         });
 
     }

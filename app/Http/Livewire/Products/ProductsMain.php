@@ -54,8 +54,7 @@ class ProductsMain extends Component
 
             $products = $products
             ->groupBy('name')
-            ->where('qty','>', 0)
-            ->where('status', 1)
+            ->WithStocks()
             ->paginate($this->pagination);
 
         }
@@ -68,8 +67,7 @@ class ProductsMain extends Component
                 
             )
             ->with('images')
-            ->where('qty','>', 0)
-            ->where('status', 1)
+            ->WithStocks()
             ->where('name','like', '%'.$this->search.'%')
             ->Orwhere('gender','like', '%'.$this->search.'%')
             ->Orwhere('description','like', '%'.$this->search.'%')
@@ -98,8 +96,7 @@ class ProductsMain extends Component
             $this->sortBy != 'percent'  && $products = $products->orderBy($this->sortBy, $this->orderBy);
 
             $products = $products
-            ->where('qty','>', 0)
-            ->where('status', 1)
+            ->WithStocks()
             ->groupBy('name')
             ->paginate($this->pagination);
         }

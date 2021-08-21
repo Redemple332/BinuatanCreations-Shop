@@ -20,6 +20,7 @@ class CreateOrderItemsTable extends Migration
             $table->decimal('price',10,2);
             $table->integer('quantity');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

@@ -19,6 +19,7 @@ class CreateSizesTable extends Migration
             $table->string('code')->unique();
             $table->boolean('status')->default(1);
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

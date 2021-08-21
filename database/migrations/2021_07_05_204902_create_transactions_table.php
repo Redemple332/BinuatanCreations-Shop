@@ -18,6 +18,7 @@ class CreateTransactionsTable extends Migration
             $table->foreignId('order_id')->constrained()->onDelete('cascade'); // <-- Relation to the order.
             $table->enum('mode', ['cod', 'card','paypal']);
             $table->enum('status', ['pending', 'approved','declined','refunded'])->default('pending');
+            
             $table->timestamps();
         });
     }

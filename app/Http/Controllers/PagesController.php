@@ -17,24 +17,21 @@ class PagesController extends Controller
         
         $flashsale = Product::with('discount')
         ->WithFlashSale()
+        ->WithStocks()
         ->with('images')
-        ->where('qty','>', 0)
-        ->where('status', 1)
         ->take(1)
         ->get();
 
         $sale_products = Product::with('discount')
         ->WithSale()
         ->with('images')
-        ->where('qty','>', 0)
-        ->where('status', 1)
+        ->WithStocks()
         ->groupBy('name')
         ->take(20)->get();
 
         $latest_products = Product::with('discount')
         ->with('images')
-        ->where('qty','>', 0)
-        ->where('status', 1)
+        ->WithStocks()
         ->groupBy('name')
         ->latest('updated_at')->take(7)->get();
         
@@ -56,8 +53,7 @@ class PagesController extends Controller
         if ($prod) {
             $related_products = Product::with('discount')
             ->with('images')
-            ->where('qty','>', 0)
-            ->where('status', 1)
+            ->WithStocks()
             ->where('category_id', $prod->category_id)
             ->where('name', '!=', $prod->name)
             ->groupBy('name')

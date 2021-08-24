@@ -6,51 +6,51 @@
             <div class="section-title">
                 <h3 class="title">Billing Details</h3>
             </div>
-           
-            @if ($addresses)
+            @if (!empty($addresses) && $addresses->isNotEmpty())
                 <div class="form-group">
-                    <select wire:model="addressId"class="input">
-                        @foreach ($addresses  as $address )
+                    <select wire:model="selection" class="input">
+                        @foreach ($addresses as $address )
                             <option value="{{ $address->id}}">{{$address->street}}, {{$address->barangay}}, {{$address->city}}, {{$address->region}}, {{$address->province}} {{$address->postalcode}}</option>
                         @endforeach
                     </select>
                 </div>
-                <button wire:click="addAddress" type="button"  class="primary-btn">Add </button>
+                <button wire:click.prevent="showFormAddress(false)" type="button"  class="primary-btn">Add </button>
                 
                 <br>
-                @if ($default_address)
-                    {{$default_address->street}}, {{$default_address->barangay}}, {{$default_address->city}}, {{$default_address->region}}, {{$default_address->province}} {{$default_address->postalcode}}
-                    <a wire:click="editAddress({{ $default_address->id }})" ><i class="fa fa-edit"></i></a>
-                    <a wire:click="removeAddress({{ $default_address->id }})" ><i class="fa fa-times"></i></a>
+                @if ($form->isNotEmpty())
+                    {{-- {{ $form->street}}, {{$form->barangay}}, {{$form->city}}, {{$form->region}}, {{$form->province}} {{$form->postalcode}} --}}
+                    {{ $form->join(', ') }}
+                    <a wire:click.prevent="editAddress({{ $form->get('id') }})" ><i class="fa fa-edit"></i></a>
+                    <a wire:click.prevent="deleteAddress({{ $form->get('id') }})" ><i class="fa fa-times"></i></a>
                 @endif
             @else
-                <form wire:submit.prevent="saveAddress" method="POST">
+                <form wire:submit.prevent="storeOrUpdateAddress" method="POST">
                     <div class="form-group">
-                        <input wire:model="fullname" class="input" type="text"  placeholder="Full Name">
+                        <input wire:model.defer="form.fullname" class="input" type="text"  placeholder="Full Name">
                     </div>
                     <div class="form-group">
-                        <input wire:model="mobile" class="input" type="tel"  placeholder="Mobile Number">
+                        <input wire:model.defer="form.mobile" class="input" type="tel"  placeholder="Mobile Number">
                     </div>
                     <div class="form-group">
-                        <input wire:model="region" class="input" type="text"  placeholder="Region">
+                        <input wire:model.defer="form.region" class="input" type="text"  placeholder="Region">
                     </div>
                     <div class="form-group">
-                        <input wire:model="province"  class="input" type="text"  placeholder="Province">
+                        <input wire:model.defer="form.province"  class="input" type="text"  placeholder="Province">
                     </div>
                     <div class="form-group">
-                        <input wire:model="city" class="input" type="text"  placeholder="City">
+                        <input wire:model.defer="form.city" class="input" type="text"  placeholder="City">
                     </div>
                     <div class="form-group">
-                        <input wire:model="barangay"  class="input" type="text"  placeholder="Barangay">
+                        <input wire:model.defer="form.barangay"  class="input" type="text"  placeholder="Barangay">
                     </div>
                     <div class="form-group">
-                        <input wire:model="street" class="input" type="text"  placeholder="Street">
+                        <input wire:model.defer="form.street" class="input" type="text"  placeholder="Street">
                     </div>
                     <div class="form-group">
-                        <input wire:model="postalcode" class="input" type="text"  placeholder="Postal Code">
+                        <input wire:model.defer="form.postalcode" class="input" type="text"  placeholder="Postal Code">
                     </div>
                     <div class="form-group">
-                        <input wire:model="full_address" class="input" type="text"  placeholder="Full Address">
+                        <input wire:model.defer="form.full_address" class="input" type="text"  placeholder="Full Address">
                     </div>
                     <div class="form-group">
                         <div class="pull-right">
@@ -89,8 +89,8 @@
                 <h4 class="title">Payments Methods</h4>
             </div>
             <div class="input-checkbox">
-                {{ $payments }}
-                <input type="radio" value="cod" wire:model="payments" name="payments" id="payments-1" checked>
+           
+                <input type="radio" value="cod"  name="payments" id="payments-1" checked>
                 <label for="payments-1">Cash On Delivery</label>
                 <div class="caption">
                     <p>Order Now Pay on Delivery<p>

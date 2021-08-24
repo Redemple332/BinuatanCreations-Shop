@@ -4,133 +4,89 @@ namespace App\Http\Livewire\Cart;
 
 use Livewire\Component;
 use App\Models\Address;
+use Illuminate\Support\Collection;
 
 class BillingDetails extends Component
 {
 
-    public $addresses, $default_address, $addressId, $payments;
+    public $selection;
 
-    public $updateId = null;
+    public $addresses;
 
-    public 
-        $fullname,
-        $mobile,
-        $region,
-        $province,
-        $city, 
-        $barangay,
-        $street, 
-        $full_address,
-        $postalcode
-    ;
+    public $form;
 
+    protected $rules = [
+        'form.id'            => 'nullable|exists:App\Models\Address,id',
+        'form.fullname'      => 'required',
+        'form.mobile'        => 'required',
+        'form.region'        => 'required',
+        'form.province'      => 'required',
+        'form.city'          => 'required', 
+        'form.barangay'      => 'required',
+        'form.street'        => 'required',
+        'form.full_address'  => 'required',
+        'form.postalcode'    => 'required',
+    ];
+
+    /**
+     * constructor
+     */
     public function mount()
     {
-      //List of Userid
-        $this->addresses = Address::where('customer_id', auth()->id())
-        ->latest('updated_at')
-        ->get();
-
-
-        if($this->addresses->count() )
-        {
-            $this->default_address = Address::where('customer_id', auth()->id() )->latest('updated_at')->first();
-        }
-        else{
-            $this->fullname = auth()->user()->name;
-            $this->addresses = [];  
-        }
+        $this->setupData();
     }
 
     public function render()
     {
-        
         return view('livewire.cart.billing-details');
     }
 
-    public function saveAddress()
+    protected function updatedSelection($value)
     {
-        //UPDATE ADDRESS
-        if ($this->updateId)
-        {
-            Address::findOrFail($this->updateId)->update([
-                'fullname' => $this->fullname,
-                'mobile' => $this->mobile,
-                'region' => $this->region,
-                'province' => $this->province ,
-                'city' => $this->city ,
-                'barangay' => $this->barangay,
-                'street' => $this->street ,
-                'full_address' => $this->full_address,
-                'postalcode' => $this->postalcode
-            ]);
-            $this->updatedAddressId();
-            $this->updateId = null;
-            $this->mount();   
-        }
-
-        //ADD ADDRESS
-        else
-        {
-            Address::create([
-                'customer_id' => Auth()->id(),
-                'fullname' => $this->fullname,
-                'mobile' => $this->mobile,
-                'region' => $this->region,
-                'province' => $this->province ,
-                'city' => $this->city ,
-                'barangay' => $this->barangay,
-                'street' => $this->street ,
-                'full_address' => $this->full_address,
-                'postalcode' => $this->postalcode
-            ]);
-
-            $this->addresses = Address::where('customer_id', Auth()->id())->get();
-            $this->mount();    
-        }
-
+        $this->form         = collect(Address::findOrFail($value));
     }
 
-    //DROPDOWN UPDATE
-    public function updatedAddressId()
+    protected function setupData(Address $defaultAddress = null)
     {
-        $this->default_address = Address::find($this->addressId);   
+        $this->addresses    = auth()->user()->addresses; 
+
+        $defaultAddress     = $defaultAddress ? $defaultAddress : $this->addresses->first();
+
+        $this->form         = collect($defaultAddress);
+
+        $this->selection    = $this->form->get('id');
+    }
+
+    public function storeOrUpdateAddress() 
+    {
+        $this->validate();
+
+        $address = $this->form->get('id') ? Address::find($this->form->get('id')) : new Address();
+        $address->fill($this->form->all());
+        $address->customer_id = auth()->id();
+        $address->save();
+
+        $this->setupData($address);
     }
 
     //SHOW FORM ADD ADDRRESS
-    public function addAddress()
+    public function showFormAddress($isUpdate)
     {
-        $this->reset();
-        $this->addresses = [];
-        $this->fullname = auth()->user()->name;
-        $this->updatedAddressId();
+        $this->reset('addresses'); 
+        !$isUpdate && $this->form = collect();
+    }
+
+    //SHOW FORM EDIT ADDRESS
+    public function editAddress(Address $address)
+    {
+        $this->reset('addresses'); 
+        $this->form = collect($address->toArray());
     }
 
     //DELETE ADDRESS
-    public function removeAddress($id)
+    public function deleteAddress(Address $address)
     {
-        Address::find($id)->delete();
-        $this->updatedAddressId();
-        $this->mount();
+        $address->delete();
+        $this->setupData();
     }
-
-    //EDIT ADDRESS
-    public function editAddress($id)
-    {
-        $this->addresses = [];
-
-        $address = Address::findOrFail($id);
-        $this->fullname = $address->fullname;
-        $this->mobile = $address->mobile;
-        $this->region = $address->region;
-        $this->province = $address->province;
-        $this->city = $address->city;
-        $this->barangay = $address->barangay;
-        $this->street = $address->street;
-        $this->full_address = $address->full_address;
-        $this->postalcode = $address->postalcode;
-        
-        $this->updateId = $id;
-    }
-
 }

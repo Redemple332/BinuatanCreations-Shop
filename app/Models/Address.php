@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Address extends Model
@@ -12,7 +13,7 @@ class Address extends Model
     use SoftDeletes;
     
     protected $fillable = [ 
-        'customer_id',
+        'customer_id', 
         'fullname',
         'mobile',
         'region',
@@ -23,4 +24,14 @@ class Address extends Model
         'full_address',
         'postalcode',
     ];
+
+    /**
+     * Get the customer that owns the Address
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function customer(): BelongsTo
+    {
+        return $this->belongsTo(Customer::class);
+    }
 }
